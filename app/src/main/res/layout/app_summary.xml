@@ -6,14 +6,6 @@
     android:layout_height="match_parent">
 
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="330dp"
-        android:layout_height="25dp"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="16dp" />
-
     <SearchView
         android:layout_width="21dp"
         android:layout_height="57dp"
@@ -33,4 +25,13 @@
         android:layout_height="526dp"
         tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="69dp" />
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="334dp"
+        android:layout_height="45dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="15dp" />
 </android.support.constraint.ConstraintLayout>
