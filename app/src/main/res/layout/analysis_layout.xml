@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                             xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+                                             android:layout_height="match_parent">
+
+    <TextView
+            android:text="最低危険度　　　%"
+            android:layout_width="369dp"
+            android:layout_height="40dp" tools:layout_editor_absoluteY="247dp"
+            tools:layout_editor_absoluteX="23dp" android:id="@+id/textView3" android:textSize="30sp"
+            android:textColor="#000000" android:textAlignment="center"/>
+    <TextView
+            android:text="最高危険度　　　%"
+            android:layout_width="365dp"
+            android:layout_height="wrap_content" tools:layout_editor_absoluteY="80dp"
+            tools:layout_editor_absoluteX="23dp" android:id="@+id/textView" android:textSize="30sp"
+            android:textColor="#FF0000" android:textAlignment="center"/>
+    <TextView
+            android:text="平均危険度　　　%"
+            android:layout_width="369dp"
+            android:layout_height="40dp" tools:layout_editor_absoluteY="166dp"
+            tools:layout_editor_absoluteX="23dp" android:id="@+id/textView2" android:textSize="30sp"
+            android:textColor="#000000" android:textAlignment="center"/>
+    <TextView
+            android:text="未完了タスク"
+            android:layout_width="305dp"
+            android:layout_height="362dp" tools:layout_editor_absoluteY="329dp"
+            tools:layout_editor_absoluteX="53dp" android:id="@+id/textView4" android:textColor="#FFA600"
+            android:textSize="36sp" android:textAlignment="center"/>
+    <TextView
+            android:text="課題１"
+            android:layout_width="115dp"
+            android:layout_height="26dp" tools:layout_editor_absoluteY="405dp"
+            tools:layout_editor_absoluteX="105dp" android:id="@+id/textView7" android:textSize="18sp"
+            android:textAlignment="center"/>
+    <TextView
+            android:text="課題３"
+            android:layout_width="115dp"
+            android:layout_height="26dp" tools:layout_editor_absoluteY="502dp"
+            tools:layout_editor_absoluteX="103dp" android:id="@+id/textView6" android:textSize="18sp"
+            android:textAlignment="center"/>
+    <TextView
+            android:text="課題２"
+            android:layout_width="115dp"
+            android:layout_height="26dp" tools:layout_editor_absoluteY="453dp"
+            tools:layout_editor_absoluteX="103dp" android:id="@+id/textView5" android:textSize="18sp"
+            android:textAlignment="center"/>
+</android.support.constraint.ConstraintLayout>
