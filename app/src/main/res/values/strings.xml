@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">yabamiru!</string>
+    <string name="max_yabasa">最高危険度 %1$d%%</string>
+    <string name="min_yabasa">最低危険度 %1$d%%</string>
+    <string name="average_yabasa">平均危険度 %1$d%%</string>
 </resources>
