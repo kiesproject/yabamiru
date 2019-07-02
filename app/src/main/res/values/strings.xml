@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">yabamiru!</string>
+
+    <string-array name="hoges">
+        <item>hoge1</item>
+        <item>hoge2</item>
+        <item>hoge3</item>
+        <item>hoge4</item>
+        <item>hoge5</item>
+    </string-array>
 </resources>
