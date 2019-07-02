@@ -10,35 +10,35 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent" android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toTopOf="@+id/guideline4" app:layout_constraintEnd_toStartOf="@+id/guideline3"
+            app:layout_constraintBottom_toTopOf="@+id/summary_guideline2" app:layout_constraintEnd_toStartOf="@+id/summary_guideline1"
             android:layout_marginEnd="8dp" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="8dp" android:id="@+id/searchView"/>
+            android:layout_marginStart="8dp" android:id="@+id/summary_searchView"/>
 
     <ImageButton
             android:id="@+id/summary_menu_button"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:srcCompat="@drawable/sozai_cman_jp_20190629202330"
-            app:layout_constraintStart_toStartOf="@+id/guideline3"
+            app:layout_constraintStart_toStartOf="@+id/summary_guideline1"
             android:layout_marginStart="8dp"
-            app:layout_constraintTop_toTopOf="@+id/searchView"
-            app:layout_constraintBottom_toBottomOf="@+id/searchView" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/summary_searchView"
+            app:layout_constraintBottom_toBottomOf="@+id/summary_searchView" app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="8dp" android:scaleType="fitCenter"/>
 
     <android.support.v7.widget.RecyclerView
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:id="@+id/recyclerView"
-            app:layout_constraintTop_toTopOf="@+id/guideline4" app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/summary_recyclerView"
+            app:layout_constraintTop_toTopOf="@+id/summary_guideline2" app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="8dp" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="8dp" android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent"/>
     <android.support.constraint.Guideline android:layout_width="wrap_content" android:layout_height="wrap_content"
-                                          android:id="@+id/guideline3"
+                                          android:id="@+id/summary_guideline1"
                                           android:orientation="vertical"
                                           app:layout_constraintGuide_percent="0.9"/>
     <android.support.constraint.Guideline android:layout_width="wrap_content" android:layout_height="wrap_content"
-                                          android:id="@+id/guideline4"
+                                          android:id="@+id/summary_guideline2"
                                           android:orientation="horizontal"
                                           app:layout_constraintGuide_percent="0.08"/>
 
