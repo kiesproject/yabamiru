@@ -28,6 +28,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="10%"
+                android:textSize="50sp"
                 android:layout_marginEnd="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginBottom="8dp"
@@ -39,12 +40,9 @@
 
     </android.support.constraint.ConstraintLayout>
 
-    <ListView
-            android:id="@+id/main_listView"
+    <android.support.v7.widget.RecyclerView
+            android:id="@+id/main_recyclerView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-    </ListView>
-
+            android:layout_height="match_parent"/>
 
 </LinearLayout>
