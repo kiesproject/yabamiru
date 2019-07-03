@@ -14,7 +14,7 @@
 
         <ImageView
                 android:id="@+id/dokuro_id1"
-                android:src="@drawable/dokuro_img1"
+                android:src="@drawable/dokuro_black"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"

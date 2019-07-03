@@ -20,7 +20,6 @@ class MainActivity : AppCompatActivity(), RecyclerViewHolder.ItemClickListener  
 
         main_recyclerView.adapter = RecyclerAdapter(this, this, hoges)
         main_recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-
     }
 
     override fun onItemClick(view: View, position: Int) {

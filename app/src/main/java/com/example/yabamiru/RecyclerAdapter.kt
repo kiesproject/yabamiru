@@ -5,7 +5,8 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 
-class RecyclerAdapter(private val context: Context, private val itemClickListener: RecyclerViewHolder.ItemClickListener, private val itemList:List<String>): RecyclerView.Adapter<RecyclerViewHolder>(){
+class RecyclerAdapter(private val context: Context, private val itemClickListener: RecyclerViewHolder.ItemClickListener,
+                      private val itemList:List<String>): RecyclerView.Adapter<RecyclerViewHolder>(){
     //ViewのonClick時に、タップされたViewがRecyclerViewの何番目にあたるかを取得して返します
 
     private var mRecyclerView : RecyclerView? = null
@@ -23,8 +24,7 @@ class RecyclerAdapter(private val context: Context, private val itemClickListene
     override fun onBindViewHolder(holder: RecyclerViewHolder, position: Int) {
         holder?.let{
             it.itemTextView.text = itemList.get(position)
-            it.itemImageView.setImageResource(R.mipmap.ic_launcher)
-
+            it.itemImageView.setImageResource(R.drawable.dokuro_blue)
         }
     }
 
