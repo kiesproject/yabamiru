@@ -3,4 +3,7 @@
     <string name="max_yabasa">最高危険度 %1$d%%</string>
     <string name="min_yabasa">最低危険度 %1$d%%</string>
     <string name="average_yabasa">平均危険度 %1$d%%</string>
+    <string name="card_dead_line">Dead Line : %1$2d/%2$d  %3$d:%4$d</string>
+    <string name="card_title">Title : %1$s</string>
+    <string name="card_percent">%1$d%%</string>
 </resources>
