@@ -7,7 +7,7 @@ import android.arch.persistence.room.RoomDatabase
     Tag::class,
     Task::class,
     TaskTags::class
-),version = 2)
+),version = 1)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun tagDao():TagDao
     abstract fun taskDao():TaskDao
