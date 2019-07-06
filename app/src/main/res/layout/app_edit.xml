@@ -7,7 +7,7 @@
 
     <EditText
         android:id="@+id/edit_title"
-        android:layout_width="315dp"
+        android:layout_width="316dp"
         android:layout_height="44dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
@@ -21,10 +21,10 @@
         app:layout_constraintHorizontal_bias="0.619"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.014" />
+        app:layout_constraintVertical_bias="0.020" />
 
     <SeekBar
-        android:id="@+id/seekBar2"
+        android:id="@+id/edit_seekBar"
         style="@style/Widget.AppCompat.SeekBar.Discrete"
         android:layout_width="308dp"
         android:layout_height="39dp"
@@ -33,13 +33,13 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:max="10"
-        android:progress="3"
+        android:progress="5"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.162" />
+        app:layout_constraintVertical_bias="0.160" />
 
     <TextView
         android:id="@+id/text_weight"
@@ -55,7 +55,7 @@
         app:layout_constraintHorizontal_bias="0.022"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/edit_title"
-        app:layout_constraintVertical_bias="0.148" />
+        app:layout_constraintVertical_bias="0.150" />
 
     <TextView
         android:id="@+id/text_deadline"
@@ -71,7 +71,7 @@
         app:layout_constraintHorizontal_bias="0.022"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.297" />
+        app:layout_constraintVertical_bias="0.30" />
 
     <EditText
         android:id="@+id/edit_date"
@@ -89,7 +89,7 @@
         app:layout_constraintHorizontal_bias="0.213"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.28" />
+        app:layout_constraintVertical_bias="0.30" />
 
     <EditText
         android:id="@+id/edit_time"
@@ -107,7 +107,7 @@
         app:layout_constraintHorizontal_bias="0.966"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.28" />
+        app:layout_constraintVertical_bias="0.30" />
 
     <TextView
         android:id="@+id/text_tag"
@@ -123,10 +123,10 @@
         app:layout_constraintHorizontal_bias="0.022"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/edit_title"
-        app:layout_constraintVertical_bias="0.401" />
+        app:layout_constraintVertical_bias="0.40" />
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerView"
+        android:id="@+id/edit_recyclerView"
         android:layout_width="292dp"
         android:layout_height="190dp"
         android:layout_marginBottom="8dp"
@@ -138,7 +138,7 @@
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.596" />
+        app:layout_constraintVertical_bias="0.60" />
 
     <TextView
         android:id="@+id/text_memo"
@@ -154,10 +154,10 @@
         app:layout_constraintHorizontal_bias="0.022"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.767" />
+        app:layout_constraintVertical_bias="0.770" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/button_tag"
         android:layout_width="85dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -170,10 +170,10 @@
         app:layout_constraintHorizontal_bias="0.832"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/edit_title"
-        app:layout_constraintVertical_bias="0.423" />
+        app:layout_constraintVertical_bias="0.420" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/text_dead"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -186,10 +186,10 @@
         app:layout_constraintHorizontal_bias="0.884"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.123" />
+        app:layout_constraintVertical_bias="0.120" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/text_easy"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -202,7 +202,7 @@
         app:layout_constraintHorizontal_bias="0.127"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.123" />
+        app:layout_constraintVertical_bias="0.120" />
 
     <TextView
         android:id="@+id/text_title"
@@ -212,13 +212,14 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Title"
+        android:gravity="start"
+        android:text="Title:"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.021"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.038" />
+        app:layout_constraintVertical_bias="0.040" />
 
     <EditText
         android:id="@+id/edit_memo"
@@ -231,12 +232,32 @@
         android:ems="10"
         android:hint="メモを入力"
         android:inputType="textMultiLine"
+        android:maxLines="10"
+        android:gravity="start"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.982"
-        android:maxLines="10"/>
+        app:layout_constraintVertical_bias="0.980"
+        />
+
+    <EditText
+        android:id="@+id/edit_tag"
+        android:layout_width="135dp"
+        android:layout_height="46dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="タグを入力"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.361"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.440" />
 
 </android.support.constraint.ConstraintLayout>
