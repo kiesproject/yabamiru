@@ -18,11 +18,11 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_tab_layout)
 
         val viewPager = findViewById<ViewPager>(R.id.pager)
         viewPager.adapter=TabAdapter(supportFragmentManager,this)
-        val tab_Layout = findViewById<TabLayout>(R.id.tab_layout)
-        tab_Layout.setupWithViewPager(viewPager)
+        val tabLayout = findViewById<TabLayout>(R.id.tab_layout)
+        tabLayout.setupWithViewPager(viewPager)
     }
 }
