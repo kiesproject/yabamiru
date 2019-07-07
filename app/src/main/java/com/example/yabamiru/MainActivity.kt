@@ -14,7 +14,7 @@ import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_tab_layout.*
 
-class MainActivity : AppCompatActivity(), RecyclerViewHolder.ItemClickListener  {
+class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,14 +24,5 @@ class MainActivity : AppCompatActivity(), RecyclerViewHolder.ItemClickListener  
         viewPager.adapter=TabAdapter(supportFragmentManager,this)
         val tab_Layout = findViewById<TabLayout>(R.id.tab_layout)
         tab_Layout.setupWithViewPager(viewPager)
-
-        val hoges = resources.getStringArray(R.array.hoges).toMutableList()
-
-        main_recyclerView.adapter = RecyclerAdapter(this, this, hoges)
-        main_recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-    }
-
-    override fun onItemClick(view: View, position: Int) {
-        Toast.makeText(applicationContext, "position $position was tapped", Toast.LENGTH_SHORT).show()
     }
 }
