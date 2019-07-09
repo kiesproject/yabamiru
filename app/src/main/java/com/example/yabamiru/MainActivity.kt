@@ -12,13 +12,12 @@ import android.widget.ArrayAdapter
 import android.widget.TextView
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_tab_layout.*
 
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_tab_layout)
+        setContentView(R.layout.activity_main)
 
         val viewPager = findViewById<ViewPager>(R.id.pager)
         viewPager.adapter=TabAdapter(supportFragmentManager,this)
