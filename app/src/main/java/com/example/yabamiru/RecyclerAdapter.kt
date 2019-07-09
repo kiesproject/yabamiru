@@ -4,13 +4,17 @@ import android.content.Context
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
+import kotlinx.android.synthetic.main.main_list_row.view.*
 
 class RecyclerAdapter(
     private val context: Context, private val itemClickListener: RecyclerViewHolder.ItemClickListener,
     private val itemTitles: List<String>, private val itemDeadlines: List<String>,
     private val itemPercents: List<String>, private val itemTags: List<TagRecyclerAdapter>
-) : RecyclerView.Adapter<RecyclerViewHolder>() {
+) : RecyclerView.Adapter<RecyclerAdapter.RecyclerViewHolder>() {
     //ViewのonClick時に、タップされたViewがRecyclerViewの何番目にあたるかを取得して返します
 
     private var mRecyclerView: RecyclerView? = null
@@ -32,7 +36,8 @@ class RecyclerAdapter(
             it.itemDeadlineView.text = itemDeadlines.get(position)
             it.itemPercent.text = itemPercents.get(position)
             it.itemTags.adapter = itemTags.get(position)
-            it.itemTags.layoutManager = LinearLayoutManager(holder.itemTags.context, LinearLayoutManager.HORIZONTAL, false)
+            it.itemTags.layoutManager =
+                LinearLayoutManager(holder.itemTags.context, LinearLayoutManager.HORIZONTAL, false)
         }
     }
 
@@ -50,6 +55,24 @@ class RecyclerAdapter(
             }
         }
         return RecyclerViewHolder(mView)
+    }
+
+    class RecyclerViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+
+        interface ItemClickListener {
+            fun onItemClick(view: View, position: Int)
+        }
+
+
+        val itemImageView: ImageView = view.main_row_imageView
+        val itemTitleView: TextView = view.row_title
+        val itemDeadlineView: TextView = view.row_deadline
+        val itemPercent: TextView = view.row_percent
+        val itemTags: RecyclerView = view.row_tag_listview
+
+        init {
+            //layoutの初期設定をする
+        }
     }
 
 }
