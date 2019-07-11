@@ -6,7 +6,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_margin="2dp"
         card_view:cardElevation="2dp"
         android:foreground="?android:attr/selectableItemBackground"
         app:cardBackgroundColor="@color/colorCardTag"
