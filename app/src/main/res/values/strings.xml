@@ -1,12 +1,53 @@
 <resources>
     <string name="app_name">yabamiru!</string>
 
-    <string-array name="hoges">
-        <item>hoge1</item>
-        <item>hoge2</item>
-        <item>hoge3</item>
-        <item>hoge4</item>
-        <item>hoge5</item>
+    <string-array name="titles">
+        <item>title1</item>
+        <item>title2</item>
+        <item>title3</item>
+        <item>title4</item>
+        <item>title5</item>
+    </string-array>
+
+    <string-array name="deadlines">
+        <item>deadline1</item>
+        <item>deadline2</item>
+        <item>deadline3</item>
+        <item>deadline4</item>
+        <item>deadline5</item>
+    </string-array>
+
+    <string-array name="percents">
+        <item>10%</item>
+        <item>20%</item>
+        <item>30%</item>
+        <item>40%</item>
+        <item>50%</item>
+    </string-array>
+
+    <string-array name="tags1">
+        <item>tags1-1</item>
+        <item>tags1-2</item>
+    </string-array>
+
+    <string-array name="tags2">
+        <item>tags2-1</item>
+        <item>tags2-2</item>
+    </string-array>
+
+    <string-array name="tags3">
+        <item>tags3-1</item>
+        <item>tags3-2</item>
+    </string-array>
+
+    <string-array name="tags4">
+        <item>tags4-1</item>
+        <item>tags4-2</item>
+    </string-array>
+
+    <string-array name="tags5">
+        <item>tags5-1</item>
+        <item>tags5-2</item>
     </string-array>
 
     <string name="max_yabasa">最高危険度 %1$d%%</string>

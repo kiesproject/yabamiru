@@ -1,30 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView
         xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
         card_view:cardElevation="2dp"
-        android:foreground="?android:attr/selectableItemBackground">
+        android:foreground="?android:attr/selectableItemBackground"
+        app:cardBackgroundColor="@color/colorCardBackground">
 
-    <LinearLayout
+    <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:gravity="center_vertical">
+            android:layout_height="match_parent">
 
         <ImageView
                 android:id="@+id/main_row_imageView"
                 android:src="@mipmap/ic_launcher"
                 android:layout_width="64dp"
                 android:layout_height="64dp"
-                android:layout_margin="8dp"/>
+                android:layout_margin="8dp" android:layout_marginTop="8dp"
+                card_view:layout_constraintTop_toTopOf="parent" android:layout_marginStart="8dp"
+                card_view:layout_constraintStart_toStartOf="parent" android:layout_marginBottom="8dp"
+                card_view:layout_constraintBottom_toBottomOf="parent"/>
 
         <TextView
-                android:id="@+id/main_row_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:id="@+id/row_title"
+                android:layout_width="156dp"
+                android:layout_height="26dp"
+                app:layout_constraintHorizontal_bias="0.0"
+                android:fontFamily="sans-serif"
+                android:text="@string/card_title"
+                tools:text="Title : 数理工の課題"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMaxTextSize="100sp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                card_view:layout_constraintEnd_toStartOf="@+id/row_guideline" android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp" card_view:layout_constraintStart_toEndOf="@+id/main_row_imageView"
+                android:layout_marginTop="8dp" card_view:layout_constraintTop_toTopOf="parent"/>
 
-    </LinearLayout>
+        <TextView
+                android:id="@+id/row_tag_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tags : "
+                card_view:layout_constraintStart_toEndOf="@+id/main_row_imageView"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                card_view:layout_constraintTop_toBottomOf="@+id/row_title"/>
+
+        <android.support.v7.widget.RecyclerView
+                android:id="@+id/row_tag_listview"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                card_view:layout_constraintStart_toEndOf="@+id/row_tag_text"
+                card_view:layout_constraintTop_toTopOf="@+id/row_tag_text"
+                card_view:layout_constraintBottom_toBottomOf="@+id/row_tag_text"
+                card_view:layout_constraintEnd_toStartOf="@+id/row_guideline"
+                android:layout_marginEnd="8dp">
+        </android.support.v7.widget.RecyclerView>
+
+        <TextView
+                android:id="@+id/row_deadline"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/card_dead_line"
+                card_view:layout_constraintTop_toBottomOf="@+id/row_tag_text" android:layout_marginTop="8dp"
+                card_view:layout_constraintStart_toEndOf="@+id/main_row_imageView" android:layout_marginStart="8dp"
+                card_view:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="8dp"
+                card_view:layout_constraintEnd_toStartOf="@+id/row_guideline" android:layout_marginEnd="8dp"/>
+
+
+        <TextView
+                android:id="@+id/row_percent"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:text="@string/card_percent"
+                tools:text="30%"
+                android:autoSizeMinTextSize="10sp"
+                android:autoSizeMaxTextSize="100sp"
+                android:textAlignment="viewEnd"
+                android:autoSizeTextType="uniform"
+                card_view:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="8dp"
+                card_view:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp" card_view:layout_constraintStart_toStartOf="@+id/row_guideline"
+                android:layout_marginTop="8dp" card_view:layout_constraintTop_toTopOf="parent"/>
+
+
+        <android.support.constraint.Guideline
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/row_guideline"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.75"/>
+
+    </android.support.constraint.ConstraintLayout>
 </android.support.v7.widget.CardView>
