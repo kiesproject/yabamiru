@@ -10,14 +10,12 @@
         android:id="@+id/edit_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="Titleを入力"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/text_easy"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/text_title"
         app:layout_constraintTop_toTopOf="parent" />
@@ -26,49 +24,37 @@
         android:id="@+id/edit_seekBar"
         style="@style/Widget.AppCompat.SeekBar.Discrete"
         android:layout_width="0dp"
-        android:layout_height="19dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:max="10"
         android:progress="5"
-        app:layout_constraintBottom_toTopOf="@+id/edit_time"
-        app:layout_constraintEnd_toEndOf="@+id/edit_title"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/edit_title"
-        app:layout_constraintTop_toBottomOf="@+id/edit_title"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintEnd_toEndOf="@+id/text_dead"
+        app:layout_constraintHorizontal_bias="0.14"
+        app:layout_constraintStart_toEndOf="@+id/text_weight"
+        app:layout_constraintTop_toBottomOf="@+id/text_easy" />
 
     <TextView
         android:id="@+id/text_weight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="52dp"
         android:text="重み:"
-        app:layout_constraintBottom_toTopOf="@+id/text_deadline"
-        app:layout_constraintEnd_toStartOf="@+id/guideline"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline6"
-        app:layout_constraintVertical_bias="0.110000014" />
+        app:layout_constraintTop_toBottomOf="@+id/text_title" />
 
     <TextView
         android:id="@+id/text_deadline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="期限:"
-        app:layout_constraintBottom_toTopOf="@+id/text_tag"
-        app:layout_constraintEnd_toEndOf="@+id/text_weight"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/text_weight"
-        app:layout_constraintTop_toTopOf="@+id/edit_date"
-        app:layout_constraintVertical_bias="0.277" />
+        app:layout_constraintBottom_toBottomOf="@+id/edit_date"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/edit_date" />
 
     <EditText
         android:id="@+id/edit_date"
@@ -81,9 +67,8 @@
         android:hint="日付を入力"
         android:inputType="date"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/text_deadline"
-        app:layout_constraintTop_toBottomOf="@+id/text_easy" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_seekBar" />
 
     <EditText
         android:id="@+id/edit_time"
@@ -91,32 +76,25 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="時間を入力"
         android:inputType="time"
-        app:layout_constraintBottom_toBottomOf="@+id/edit_date"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/edit_date"
-        app:layout_constraintTop_toTopOf="@+id/edit_date"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="@+id/edit_date" />
 
     <TextView
         android:id="@+id/text_tag"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="タグ:"
-        app:layout_constraintBottom_toTopOf="@+id/edit_recyclerView"
-        app:layout_constraintEnd_toStartOf="@+id/guideline"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintBottom_toBottomOf="@+id/edit_recyclerView"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_date"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="@+id/edit_recyclerView" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/edit_recyclerView"
@@ -126,7 +104,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/edit_date"
+        app:layout_constraintStart_toEndOf="@+id/text_tag"
         app:layout_constraintTop_toBottomOf="@+id/edit_time" />
 
     <TextView
@@ -135,60 +113,47 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:text="メモ:"
         app:layout_constraintBottom_toBottomOf="@+id/edit_memo"
-        app:layout_constraintEnd_toEndOf="@+id/text_tag"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/edit_memo" />
 
     <TextView
         android:id="@+id/text_dead"
-        android:layout_width="14dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="4dp"
         android:text="死"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.67"
-        app:layout_constraintStart_toEndOf="@+id/edit_seekBar"
-        app:layout_constraintTop_toTopOf="@+id/guideline6" />
+        app:layout_constraintTop_toTopOf="@+id/text_easy" />
 
     <TextView
         android:id="@+id/text_easy"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="320dp"
+        android:layout_marginTop="16dp"
         android:text="楽"
-        app:layout_constraintBottom_toBottomOf="@+id/text_dead"
-        app:layout_constraintEnd_toStartOf="@+id/guideline"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintEnd_toStartOf="@+id/text_dead"
         app:layout_constraintStart_toStartOf="@+id/edit_seekBar"
-        app:layout_constraintTop_toTopOf="@+id/guideline6" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_title" />
 
     <TextView
         android:id="@+id/text_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
         android:gravity="start"
         android:text="Title:"
-        app:layout_constraintBottom_toBottomOf="@+id/edit_title"
-        app:layout_constraintEnd_toEndOf="@+id/text_weight"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/edit_title"
-        app:layout_constraintVertical_bias="0.59000003" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/edit_memo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
@@ -197,9 +162,8 @@
         android:hint="メモを入力"
         android:inputType="textMultiLine"
         android:maxLines="10"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/edit_recyclerView"
-        app:layout_constraintStart_toStartOf="@+id/edit_recyclerView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/text_memo"
         app:layout_constraintTop_toBottomOf="@+id/edit_recyclerView" />
 
     <EditText
@@ -207,24 +171,23 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
-        android:layout_marginStart="68dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="タグを入力"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toStartOf="@+id/guideline4"
-        app:layout_constraintStart_toStartOf="@+id/edit_recyclerView"
+        app:layout_constraintStart_toStartOf="@+id/guideline5"
         app:layout_constraintTop_toTopOf="@+id/edit_recyclerView" />
 
     <Button
         android:id="@+id/button_tag"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
         android:text="追加"
-        app:layout_constraintBottom_toBottomOf="@+id/edit_tag"
-        app:layout_constraintEnd_toEndOf="@+id/edit_recyclerView" />
+        app:layout_constraintStart_toEndOf="@+id/edit_tag"
+        app:layout_constraintTop_toTopOf="@+id/edit_tag" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline"
@@ -259,6 +222,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.15" />
+        app:layout_constraintGuide_begin="72dp" />
+
+    <Button
+        android:id="@+id/button_add"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="16dp"
+        android:text="予定を追加"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline4"
+        app:layout_constraintTop_toBottomOf="@+id/edit_memo" />
 
 </android.support.constraint.ConstraintLayout>
