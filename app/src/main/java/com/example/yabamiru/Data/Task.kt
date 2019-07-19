@@ -10,6 +10,7 @@ data class Task constructor(
     var title:String="",
     var weight:Int,
     var deadLine:Long,
+    var finishedYabasa :Float,
     var memo:String,
     var isActive:Boolean
 )
