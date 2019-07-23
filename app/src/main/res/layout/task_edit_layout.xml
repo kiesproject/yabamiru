@@ -14,7 +14,6 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
             android:ems="10"
-            android:hint="@string/input_hint_title"
             android:inputType="textPersonName"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/text_title"
@@ -62,7 +61,6 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:ems="10"
-            android:hint="@string/input_hint_day"
             android:inputType="date"
             app:layout_constraintStart_toEndOf="@+id/text_deadline"
             app:layout_constraintTop_toBottomOf="@+id/edit_seekBar"/>
@@ -74,12 +72,11 @@
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:ems="10"
-            android:hint="@string/input_hint_time"
             android:inputType="time"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/edit_date"
-            app:layout_constraintTop_toTopOf="@+id/edit_date" />
+            app:layout_constraintTop_toTopOf="@+id/edit_date"/>
 
     <TextView
             android:id="@+id/text_tag"
@@ -153,13 +150,12 @@
             android:layout_marginTop="48dp"
             android:ems="10"
             android:gravity="start"
-            android:hint="@string/input_hint_memo"
             android:inputType="textMultiLine"
             android:maxLines="10"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toEndOf="@+id/text_memo"
-            app:layout_constraintTop_toBottomOf="@+id/edit_recyclerView" />
+            app:layout_constraintTop_toBottomOf="@+id/edit_recyclerView"/>
 
     <Button
             android:id="@+id/button_tag"
@@ -186,7 +182,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_marginTop="28dp"
-            android:text="@string/add_plan"
+            android:text="予定を更新"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edit_memo"/>
 
@@ -197,7 +193,6 @@
             android:layout_marginEnd="8dp"
             android:layout_marginTop="12dp"
             android:ems="10"
-            android:hint="@string/input_hint_tag"
             android:inputType="textPersonName"
             app:layout_constraintEnd_toStartOf="@+id/edit_guideline_right"
             app:layout_constraintHorizontal_bias="0.956"
