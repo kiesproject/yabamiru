@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/title_text"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -28,7 +27,7 @@
         android:text="重み"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintTop_toBottomOf="@+id/title_text" />
 
     <SeekBar
         android:id="@+id/seekBar"
@@ -49,10 +48,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="304dp" />
+        app:layout_constraintGuide_end="107dp" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/percent_text"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -76,7 +75,7 @@
         app:layout_constraintTop_toBottomOf="@+id/seekBar" />
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerView"
+        android:id="@+id/tag_recyclerView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginEnd="8dp"
@@ -107,7 +106,7 @@
         app:layout_constraintTop_toTopOf="@+id/edit_guideline2" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/memo_text2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -120,7 +119,7 @@
         app:layout_constraintTop_toBottomOf="@+id/memo_text" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/delite_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="44dp"
@@ -128,10 +127,10 @@
         android:background="@drawable/tag_shape_rounded_10p"
         android:text="削除"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+        app:layout_constraintTop_toBottomOf="@+id/memo_text2" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/edit_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -140,7 +139,7 @@
         android:text="編集"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.387"
-        app:layout_constraintStart_toEndOf="@+id/button"
-        app:layout_constraintTop_toTopOf="@+id/button" />
+        app:layout_constraintStart_toEndOf="@+id/delite_button"
+        app:layout_constraintTop_toTopOf="@+id/delite_button" />
 
 </android.support.constraint.ConstraintLayout>
