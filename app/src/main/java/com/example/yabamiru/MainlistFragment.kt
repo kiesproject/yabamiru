@@ -2,17 +2,19 @@ package com.example.yabamiru
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v4.app.Fragment
+import android.support.v4.app.FragmentActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
 import kotlinx.android.synthetic.main.fragment_mainlist.*
 
-class MainlistFragment : AppCompatActivity(), RecyclerAdapter.RecyclerViewHolder.ItemClickListener  {
-
-    override fun onCreate(savedInstanceState: Bundle?) {
+class MainlistFragment : Fragment(), RecyclerAdapter.RecyclerViewHolder.ItemClickListener {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.fragment_mainlist)
 
         val titles = resources.getStringArray(R.array.titles).toMutableList()
         val deadlines = resources.getStringArray(R.array.deadlines).toMutableList()
@@ -30,11 +32,14 @@ class MainlistFragment : AppCompatActivity(), RecyclerAdapter.RecyclerViewHolder
         val adapter5 = TagRecyclerAdapter(tags5)
         val adapterlist = mutableListOf(adapter1, adapter2, adapter3, adapter4, adapter5)
 
-        main_recyclerView.adapter = RecyclerAdapter(this, this, titles, deadlines, percents, adapterlist)
-        main_recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        main_recyclerView.adapter = RecyclerAdapter(view.context, this, titles, deadlines, percents, adapterlist)
+        main_recyclerView.layoutManager = LinearLayoutManager(view.context, LinearLayoutManager.VERTICAL, false)
+    }
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        return inflater.inflate(R.layout.fragment_mainlist, container, false)
     }
 
     override fun onItemClick(view: View, position: Int) {
-        Toast.makeText(applicationContext, "position $position was tapped", Toast.LENGTH_SHORT).show()
+        Toast.makeText(view.context, "position $position was tapped", Toast.LENGTH_SHORT).show()
     }
 }
