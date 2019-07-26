@@ -4,6 +4,7 @@ import android.arch.persistence.room.Room
 import android.graphics.Color
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -39,7 +40,7 @@ class AddTaskFragment : Fragment() {
     }
 
     private fun setViews() {
-        val addTaskButton = view.findViewById<Button>(R.id.add_task_button)
+        val addTaskButton = view!!.findViewById<Button>(R.id.button_add)
         addTaskButton.setOnClickListener(onClickListener(addTaskButton.id))
         titleEditText = view!!.findViewById(R.id.edit_title)
         weightSeekBar = view!!.findViewById(R.id.edit_seekBar)
@@ -48,14 +49,17 @@ class AddTaskFragment : Fragment() {
         tagEditText = view!!.findViewById(R.id.edit_tag)
         addTagButton = view!!.findViewById(R.id.button_tag)
         addTagButton.setOnClickListener(onClickListener(addTagButton.id))
+        tagRecyclerView = view!!.findViewById(R.id.edit_recyclerView)
+        tagRecyclerView.layoutManager= LinearLayoutManager(view!!.context)
+
     }
 
     private fun onClickListener(viewId: Int): View.OnClickListener {
         when (viewId) {
-            R.id.add_task_button -> {
+            R.id.button_add -> {
                 return View.OnClickListener {
-                    if(validation())
-                        addTask()
+                    //if(validation())
+                       // addTask()
                 }
             }
             R.id.button_tag -> {
@@ -76,28 +80,29 @@ class AddTaskFragment : Fragment() {
             tagNameList.add(tagEditText.text.toString())
             if(tagRecyclerView.adapter==null)
                 tagRecyclerView.adapter=TagRecyclerViewAdapter(this.context!!,tagNameList)
-            else
+            else {
                 tagRecyclerView.adapter!!.notifyItemInserted(tagNameList.size-1)
+            }
         }
     }
 
-    private fun addTask(){
-        val task = Task(title=titleEditText.text.toString(),weight = weightSeekBar.progress,deadLine = 0,memo =view!!.findViewById<EditText>(R.id.edit_memo).text.toString() ,isActive = true)
-        thread {
-            val taskId =db.taskDao().insert(task)
-            val allTagList = db.tagDao().getAll()
-            val taskTags = mutableListOf<TaskTags>()
-            tagNameList.forEach{tagName->
-                if(allTagList.none { it.name == tagName }){
-                    val tagId=db.tagDao().insert(Tag(name=tagName,color= Color.RED))
-                    taskTags.add(TaskTags(tagId[0],taskId[0]))
-                }else{
-                    taskTags.add(TaskTags(allTagList.filter { it.name==tagName }[0].tagId,taskId[0]))
-                }
-            }
-            db.taskTagsDao().insert(*taskTags.toTypedArray())
-        }
-    }
+//    private fun addTask(){
+//        val task = Task(title=titleEditText.text.toString(),weight = weightSeekBar.progress,deadLine = 0,memo =view!!.findViewById<EditText>(R.id.edit_memo).text.toString() ,isActive = true)
+//        thread {
+//            val taskId =db.taskDao().insert(task)
+//            val allTagList = db.tagDao().getAll()
+//            val taskTags = mutableListOf<TaskTags>()
+//            tagNameList.forEach{tagName->
+//                if(allTagList. { tagName.name == tagName }){
+//                    val tagId=db.tagDao().insert(Tag(name=tagName,color= Color.RED))
+//                    taskTags.add(TaskTags(tagId[0],taskId[0]))
+//                }else{
+//                    taskTags.add(TaskTags(allTagList.filter { it.name==tagName }[0].tagId,taskId[0]))
+//                }
+//            }
+//            db.taskTagsDao().insert(*taskTags.toTypedArray())
+//        }
+//    }
 
     private fun validation(): Boolean {
         var flg = true
