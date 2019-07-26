@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -53,22 +54,25 @@
     <TextView
         android:id="@+id/percent_text"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="28dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:text="　　％"
         android:textAlignment="center"
         android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/seekBar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/edit_guideline1"
-        app:layout_constraintTop_toTopOf="@+id/seekBar" />
+        app:layout_constraintTop_toTopOf="@+id/seekBar"
+        app:layout_constraintVertical_bias="0.277" />
 
     <TextView
         android:id="@+id/tag_text"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="20dp"
         android:text="タグ"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="@+id/weight_text"
@@ -133,13 +137,33 @@
         android:id="@+id/edit_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="152dp"
+        android:layout_marginEnd="44dp"
         android:background="@drawable/tag_shape_rounded_10p"
         android:text="編集"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.387"
-        app:layout_constraintStart_toEndOf="@+id/delite_button"
         app:layout_constraintTop_toTopOf="@+id/delite_button" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="20dp"
+        android:text="楽"
+        app:layout_constraintBottom_toTopOf="@+id/tag_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/seekBar" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        android:text="死"
+        app:layout_constraintBottom_toTopOf="@+id/tag_text"
+        app:layout_constraintEnd_toStartOf="@+id/edit_guideline1"
+        app:layout_constraintTop_toTopOf="@+id/textView2" />
 
 </android.support.constraint.ConstraintLayout>
