@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import com.example.yabamiru.R
 
-class TagRecyclerViewAdapter(private val context: Context, private val tagList: List<String>) :
+class TagRecyclerViewAdapter( private val context: Context, private val tagList: List<String>) :
     RecyclerView.Adapter<TagRecyclerViewAdapter.TagViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TagRecyclerViewAdapter.TagViewHolder {
@@ -19,11 +19,11 @@ class TagRecyclerViewAdapter(private val context: Context, private val tagList: 
 
     override fun getItemCount() = tagList.size
 
-    override fun onBindViewHolder(viewHolder: TagRecyclerViewAdapter.TagViewHolder, position: Int) {
+    override fun onBindViewHolder(viewHolder: TagViewHolder, position: Int) {
         viewHolder.tagName.text = tagList[position]
     }
 
     class TagViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val tagName = view.findViewById<TextView>(R.id.tag_text)
+        val tagName = view.findViewById<TextView>(R.id.tag_text)!!
     }
 }
