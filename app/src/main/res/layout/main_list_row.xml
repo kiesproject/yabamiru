@@ -51,7 +51,7 @@
         <android.support.v7.widget.RecyclerView
                 android:id="@+id/row_tag_listview"
                 android:layout_width="0dp"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 card_view:layout_constraintStart_toEndOf="@+id/row_tag_text"
                 card_view:layout_constraintTop_toTopOf="@+id/row_tag_text"

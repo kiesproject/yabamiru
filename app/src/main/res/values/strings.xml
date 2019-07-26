@@ -56,19 +56,5 @@
     <string name="card_dead_line">Dead Line : %1$2d/%2$d  %3$d:%4$d</string>
     <string name="card_title">Title : %1$s</string>
     <string name="card_percent">%1$d%%</string>
-    <string name="input_hint_title">Titleを入力</string>
-    <string name="title_weight">重み:</string>
-    <string name="title_deadline">期限:</string>
-    <string name="input_hint_day">日付を入力</string>
-    <string name="input_hint_time">時間を入力</string>
-    <string name="title_tag">タグ:</string>
-    <string name="title_memo">メモ:</string>
-    <string name="dead">死</string>
-    <string name="easy">楽</string>
-    <string name="title_title">Title:</string>
-    <string name="input_hint_memo">メモを入力</string>
-    <string name="add">追加</string>
-    <string name="add_plan">予定を追加</string>
-    <string name="input_hint_tag">タグを入力</string>
 
 </resources>
