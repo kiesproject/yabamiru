@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                             xmlns:app="http://schemas.android.com/apk/res-auto"
+                                             xmlns:tools="http://schemas.android.com/tools"
+                                             android:layout_width="match_parent"
+                                             android:layout_height="match_parent"
+>
+
+    <EditText
+            android:id="@+id/task_edit_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/task_text_title"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+    <SeekBar
+            android:id="@+id/task_edit_seekBar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:max="100"
+            android:progress="50"
+            app:layout_constraintEnd_toStartOf="@+id/task_edit_guideline_right"
+            app:layout_constraintStart_toEndOf="@+id/task_text_weight"
+            app:layout_constraintTop_toBottomOf="@+id/task_text_easy"/>
+
+    <TextView
+            android:id="@+id/task_text_weight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@string/title_weight"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/task_edit_seekBar"
+            app:layout_constraintBottom_toBottomOf="@+id/task_edit_seekBar"/>
+
+    <TextView
+            android:id="@+id/task_text_deadline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/title_deadline"
+            app:layout_constraintBottom_toBottomOf="@+id/task_edit_date"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/task_edit_date" />
+
+    <EditText
+            android:id="@+id/task_edit_date"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:ems="10"
+            android:inputType="date"
+            app:layout_constraintStart_toEndOf="@+id/task_text_deadline"
+            app:layout_constraintTop_toBottomOf="@+id/task_edit_seekBar"/>
+
+    <EditText
+            android:id="@+id/task_edit_time"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:ems="10"
+            android:inputType="time"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/task_edit_date"
+            app:layout_constraintTop_toTopOf="@+id/task_edit_date"/>
+
+    <TextView
+            android:id="@+id/task_text_tag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="8dp"
+            android:text="@string/title_tag"
+            app:layout_constraintBottom_toBottomOf="@+id/task_edit_tag"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/task_edit_tag"
+    />
+
+    <android.support.v7.widget.RecyclerView
+            android:id="@+id/task_edit_recyclerView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:clipToPadding="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/task_text_tag"
+            app:layout_constraintTop_toBottomOf="@+id/task_edit_tag"/>
+
+    <TextView
+            android:id="@+id/task_text_memo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/title_memo"
+            app:layout_constraintBottom_toBottomOf="@+id/task_edit_memo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/task_edit_memo" />
+
+    <TextView
+            android:id="@+id/task_text_dead"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dead"
+            app:layout_constraintTop_toTopOf="@+id/task_text_easy"
+            app:layout_constraintEnd_toEndOf="@+id/task_edit_seekBar"/>
+
+    <TextView
+            android:id="@+id/task_text_easy"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/easy"
+            app:layout_constraintStart_toStartOf="@+id/task_edit_seekBar"
+            app:layout_constraintTop_toBottomOf="@+id/task_edit_title"/>
+
+    <TextView
+            android:id="@+id/task_text_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:gravity="start"
+            android:text="@string/title_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/task_edit_title"
+            app:layout_constraintBottom_toBottomOf="@+id/task_edit_title"/>
+
+    <EditText
+            android:id="@+id/task_edit_memo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="48dp"
+            android:ems="10"
+            android:gravity="start"
+            android:inputType="textMultiLine"
+            android:maxLines="10"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/task_text_memo"
+            app:layout_constraintTop_toBottomOf="@+id/task_edit_recyclerView"/>
+
+    <Button
+            android:id="@+id/task_button_tag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:text="@string/add"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.111"
+            app:layout_constraintStart_toStartOf="@+id/task_edit_guideline_right"
+            app:layout_constraintTop_toTopOf="@+id/task_edit_tag"
+            app:layout_constraintBottom_toBottomOf="@+id/task_edit_tag"/>
+
+    <android.support.constraint.Guideline
+            android:id="@+id/task_edit_guideline_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.75"/>
+
+    <Button
+            android:id="@+id/task_button_add"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="28dp"
+            android:text="予定を更新"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/task_edit_memo"/>
+
+    <EditText
+            android:id="@+id/task_edit_tag"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="12dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toStartOf="@+id/task_edit_guideline_right"
+            app:layout_constraintHorizontal_bias="0.956"
+            app:layout_constraintTop_toBottomOf="@+id/task_edit_date"
+            app:layout_constraintStart_toEndOf="@+id/task_text_tag"
+            android:layout_marginStart="8dp"/>
+
+    <TextView
+            android:id="@+id/task_weight_percent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="50%"
+            android:layout_marginStart="8dp"
+            app:layout_constraintTop_toTopOf="@+id/task_edit_seekBar"
+            app:layout_constraintBottom_toBottomOf="@+id/task_edit_seekBar"
+            app:layout_constraintStart_toStartOf="@+id/task_edit_guideline_right"/>
+
+</android.support.constraint.ConstraintLayout>
