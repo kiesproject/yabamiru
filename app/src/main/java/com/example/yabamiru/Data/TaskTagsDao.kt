@@ -13,7 +13,7 @@ interface TaskTagsDao{
     fun getByTaskId(taskId:Long):LiveData<TaskTags>
 
     @Insert
-    fun insert(vararg taskTags: TaskTags):Long
+    fun insert(vararg taskTags: TaskTags):List<Long>
 
     @Delete
     fun delete(taskTags: TaskTags)
