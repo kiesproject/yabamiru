@@ -18,7 +18,9 @@ class TimePick :DialogFragment(),TimePickerDialog.OnTimeSetListener{
     }
     override fun onTimeSet(view: TimePicker?, hour: Int, minute: Int) {
         val c = Calendar.getInstance()
-        val time = SimpleDateFormat("hh:mm", Locale.ENGLISH).format(c.time)
+        c.set(Calendar.HOUR,hour)
+        c.set(Calendar.MINUTE,minute)
+        val time = SimpleDateFormat("HH:mm", Locale.ENGLISH).format(c.time)
         targetFragment!!.onActivityResult(targetRequestCode, Activity.RESULT_OK, Intent().putExtra("selectedTime",time))
     }
 }
