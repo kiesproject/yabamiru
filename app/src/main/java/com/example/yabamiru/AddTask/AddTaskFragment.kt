@@ -114,12 +114,8 @@ class AddTaskFragment : Fragment() {
         val pattern = SimpleDateFormat("yyyy/MM/dd HH:mm")
         val time = pattern.parse(dateTime).time
         val task = Task(
-            title = titleEditText.text.toString(),
-            weight = weightSeekBar.progress,
-            deadLine = time,
-            memo = view!!.findViewById<EditText>(R.id.task_edit_memo).text.toString(),
-            finishedYabasa = 0.0F,
-            isActive = true
+            title = titleEditText.text.toString(), weight = weightSeekBar.progress, deadLine = time,
+            memo = view!!.findViewById<EditText>(R.id.edit_memo).text.toString(), isActive = true,finishedYabasa = 0f
         )
         thread {
             val taskId = db.taskDao().insert(task)
