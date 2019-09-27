@@ -14,6 +14,7 @@ import android.view.ViewGroup
 import android.widget.*
 import com.example.yabamiru.Data.*
 import com.example.yabamiru.R
+import kotlinx.android.synthetic.main.task_edit_layout.*
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import kotlin.concurrent.thread
@@ -35,7 +36,7 @@ class AddTaskFragment : Fragment() {
     lateinit var db: AppDatabase
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.app_edit, container, false)
+        return inflater.inflate(R.layout.task_edit_layout, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -44,11 +45,11 @@ class AddTaskFragment : Fragment() {
     }
 
     private fun setViews() {
-        val addTaskButton = view!!.findViewById<Button>(R.id.button_add)
+        val addTaskButton = view!!.findViewById<Button>(R.id.task_button_add)
         addTaskButton.setOnClickListener(onClickListener(addTaskButton.id))
-        titleEditText = view!!.findViewById(R.id.edit_title)
-        weightSeekBar = view!!.findViewById(R.id.edit_seekBar)
-        dateEditText = view!!.findViewById(R.id.edit_date)
+        titleEditText = view!!.findViewById(R.id.task_edit_title)
+        weightSeekBar = view!!.findViewById(R.id.task_edit_seekBar)
+        dateEditText = view!!.findViewById(R.id.task_edit_date)
         dateEditText.setOnFocusChangeListener { view, hasFocus ->
             if (hasFocus) {
                 val newFragment = DatePick()
@@ -57,7 +58,7 @@ class AddTaskFragment : Fragment() {
 
             }
         }
-        timeEditText = view!!.findViewById(R.id.edit_time)
+        timeEditText = view!!.findViewById(R.id.task_edit_time)
         timeEditText.setOnFocusChangeListener { view, hasFocus ->
             if (hasFocus) {
                 val newFragment = TimePick()
@@ -65,22 +66,22 @@ class AddTaskFragment : Fragment() {
                 newFragment.show(fragmentManager, "timePicker")
             }
         }
-        tagEditText = view!!.findViewById(R.id.edit_tag)
-        addTagButton = view!!.findViewById(R.id.button_tag)
+        tagEditText = view!!.findViewById(R.id.task_edit_tag)
+        addTagButton = view!!.findViewById(R.id.task_button_tag)
         addTagButton.setOnClickListener(onClickListener(addTagButton.id))
-        tagRecyclerView = view!!.findViewById(R.id.edit_recyclerView)
+        tagRecyclerView = view!!.findViewById(R.id.task_edit_recyclerView)
         tagRecyclerView.layoutManager = LinearLayoutManager(view!!.context)
     }
 
     private fun onClickListener(viewId: Int): View.OnClickListener {
         when (viewId) {
-            R.id.button_add -> {
+            R.id.task_button_add -> {
                 return View.OnClickListener {
                     if (validation())
                         addTask()
                 }
             }
-            R.id.button_tag -> {
+            R.id.task_button_tag -> {
                 return View.OnClickListener {
                     addTag()
                 }
@@ -165,7 +166,7 @@ class AddTaskFragment : Fragment() {
             val time = pattern.parse(timeEditText.text.toString())
         } catch (e: ParseException) {
             flg = false
-            str += "\n正しく時間をを入力してください"
+            str += "\n正しく時間を入力してください"
         }
 
         //タグチェック
