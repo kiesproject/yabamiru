@@ -9,6 +9,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import kotlinx.android.synthetic.main.fragment_mainlist.*
 
@@ -34,6 +35,22 @@ class MainlistFragment : Fragment(), RecyclerAdapter.RecyclerViewHolder.ItemClic
 
         main_recyclerView.adapter = RecyclerAdapter(view.context, this, titles, deadlines, percents, adapterlist)
         main_recyclerView.layoutManager = LinearLayoutManager(view.context, LinearLayoutManager.VERTICAL, false)
+
+        val spinnerItems = arrayOf(
+            "昇順",
+            "降順"
+        )
+
+        val spinneradapter = ArrayAdapter(
+            getActivity()!!.getApplicationContext(),
+            android.R.layout.simple_spinner_item,
+            spinnerItems
+        )
+
+
+        spinneradapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+
+        main_spinner_button.adapter = spinneradapter
     }
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_mainlist, container, false)
