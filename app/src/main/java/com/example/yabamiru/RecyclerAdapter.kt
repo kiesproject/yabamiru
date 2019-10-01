@@ -12,8 +12,8 @@ import kotlinx.android.synthetic.main.main_list_row.view.*
 
 class RecyclerAdapter(
     private val context: Context, private val itemClickListener: RecyclerViewHolder.ItemClickListener,
-    private val itemTitles: List<String>, private val itemDeadlines: List<String>,
-    private val itemPercents: List<String>, private val itemTags: List<TagRecyclerAdapter>
+    private val itemTitles: List<String>, private val itemDeadlines: List<Long>,
+    private val itemPercents: List<Int>, private val itemTags: MutableSet<TagRecyclerAdapter>
 ) : RecyclerView.Adapter<RecyclerAdapter.RecyclerViewHolder>() {
     //ViewのonClick時に、タップされたViewがRecyclerViewの何番目にあたるかを取得して返します
 
@@ -33,9 +33,9 @@ class RecyclerAdapter(
         holder.let {
             it.itemImageView.setImageResource(R.drawable.dokuro_blue)
             it.itemTitleView.text = itemTitles.get(position)
-            it.itemDeadlineView.text = itemDeadlines.get(position)
-            it.itemPercent.text = itemPercents.get(position)
-            it.itemTags.adapter = itemTags.get(position)
+            it.itemDeadlineView.text = itemDeadlines.get(position).toString()
+            it.itemPercent.text = itemPercents.get(position).toString()
+            it.itemTags.adapter = itemTags.elementAt(position)
             it.itemTags.layoutManager =
                 LinearLayoutManager(holder.itemTags.context, LinearLayoutManager.HORIZONTAL, false)
         }
