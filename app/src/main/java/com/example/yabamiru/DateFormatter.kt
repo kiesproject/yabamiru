@@ -11,7 +11,7 @@ object DateFormatter {
     private val datePattern =  SimpleDateFormat(DATE)
     private val timePattern = SimpleDateFormat(TIME)
 
-    fun timeToTimeStr(time:Long)= timePattern.format(time)
-    fun timeToDateStr(time:Long) = datePattern.format(time)
-    fun strToTime(str:String) = combinedPattern.parse(str)
+    fun timeToTimeStr(time:Long)= timePattern.format(time).toString()
+    fun timeToDateStr(time:Long) = datePattern.format(time).toString()
+    fun strToTime(str:String) = combinedPattern.parse(str).time
 }
