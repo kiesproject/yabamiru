@@ -17,4 +17,7 @@ interface TaskTagsDao{
 
     @Update
     fun update(taskTags: TaskTags)
+
+    @Query("DELETE FROM tasktags")
+    fun deleteAll()
 }
