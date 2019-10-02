@@ -1,9 +1,10 @@
-package com.example.yabamiru
+package com.example.yabamiru.EditPage
 
 import android.app.DatePickerDialog
 import android.app.Dialog
 import android.os.Bundle
 import android.support.v4.app.DialogFragment
+import com.example.yabamiru.EditPage.EditActivity
 import java.util.Calendar
 
 class DatePick : DialogFragment(), DatePickerDialog.OnDateSetListener {
@@ -16,7 +17,7 @@ class DatePick : DialogFragment(), DatePickerDialog.OnDateSetListener {
 
         return DatePickerDialog(
             activity,
-            activity as MainActivity?,
+            activity as EditActivity?,
             year,
             month,
             day)
