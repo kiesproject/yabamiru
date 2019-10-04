@@ -11,7 +11,7 @@
         android:foreground="?android:attr/selectableItemBackground"
         app:cardBackgroundColor="@color/colorCardTag"
         app:contentPaddingLeft="4dp"
-        app:contentPaddingRight="4dp">
+        app:contentPaddingRight="4dp" android:id="@+id/tag_cardview">
 
     <TextView
             android:id="@+id/tag_text"
