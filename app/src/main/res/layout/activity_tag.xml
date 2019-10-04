@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView
-        xmlns:card_view="http://schemas.android.com/apk/res-auto"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/tag_cardView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="2dp"
-        card_view:cardElevation="2dp"
         android:foreground="?android:attr/selectableItemBackground"
         app:cardBackgroundColor="@color/colorCardTag"
         app:contentPaddingLeft="4dp"
-        app:contentPaddingRight="4dp">
+        app:contentPaddingRight="4dp" card_view:cardElevation="2dp">
 
     <TextView
             android:id="@+id/tag_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="tag"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:text="tag"/>
 
 
 </android.support.v7.widget.CardView>
