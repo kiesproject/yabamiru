@@ -8,7 +8,7 @@ import android.view.ViewGroup
 
 class Tab01Fragment: Fragment(){
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_tab_01,container,false)
+        return inflater.inflate(R.layout.fragment_mainlist, container,false)
     }
 }
 

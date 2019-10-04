@@ -9,15 +9,15 @@ interface TaskTagsDao{
     @Query("SELECT * FROM TaskTags")
     fun getAll():LiveData<List<TaskTags>>
 
-    @Query("SELECT * FROM TaskTags WHERE taskId=(:taskId)")
-    fun getByTaskId(taskId:Long):LiveData<TaskTags>
-
-    @Insert
-    fun insert(vararg taskTags: TaskTags):Long
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insert(vararg taskTags: TaskTags):List<Long>
 
     @Delete
     fun delete(taskTags: TaskTags)
 
     @Update
     fun update(taskTags: TaskTags)
+
+    @Query("DELETE FROM tasktags")
+    fun deleteAll()
 }

@@ -18,18 +18,18 @@
         <ImageView
                 android:id="@+id/main_row_imageView"
                 android:src="@mipmap/ic_launcher"
-                android:layout_width="64dp"
-                android:layout_height="64dp"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
                 android:layout_margin="8dp" android:layout_marginTop="8dp"
                 card_view:layout_constraintTop_toTopOf="parent" android:layout_marginStart="8dp"
                 card_view:layout_constraintStart_toStartOf="parent" android:layout_marginBottom="8dp"
-                card_view:layout_constraintBottom_toBottomOf="parent"/>
+                card_view:layout_constraintBottom_toBottomOf="parent" android:layout_marginEnd="8dp"
+                card_view:layout_constraintEnd_toStartOf="@+id/row_tag_text"/>
 
         <TextView
                 android:id="@+id/row_title"
-                android:layout_width="156dp"
-                android:layout_height="26dp"
-                app:layout_constraintHorizontal_bias="0.0"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:fontFamily="sans-serif"
                 android:text="@string/card_title"
                 tools:text="Title : 数理工の課題"
@@ -45,15 +45,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Tags : "
-                card_view:layout_constraintStart_toEndOf="@+id/main_row_imageView"
-                android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                card_view:layout_constraintTop_toBottomOf="@+id/row_title"/>
+                card_view:layout_constraintTop_toBottomOf="@+id/row_title" tools:layout_editor_absoluteX="80dp"/>
 
         <android.support.v7.widget.RecyclerView
                 android:id="@+id/row_tag_listview"
                 android:layout_width="0dp"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 card_view:layout_constraintStart_toEndOf="@+id/row_tag_text"
                 card_view:layout_constraintTop_toTopOf="@+id/row_tag_text"
