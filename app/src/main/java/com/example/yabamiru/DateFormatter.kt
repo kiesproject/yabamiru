@@ -5,7 +5,7 @@ import java.text.SimpleDateFormat
 object DateFormatter {
 
     const val DATE ="yyyy/MM/dd"
-    const val TIME ="hh:mm"
+    const val TIME ="HH:mm"
 
     private val combinedPattern = SimpleDateFormat(DATE+TIME)
     private val datePattern =  SimpleDateFormat(DATE)
