@@ -13,6 +13,8 @@ import android.view.ViewGroup
 import android.widget.*
 import com.example.yabamiru.Data.*
 import com.example.yabamiru.DateFormatter
+import com.example.yabamiru.EditPage.DatePick
+import com.example.yabamiru.EditPage.TimePick
 import com.example.yabamiru.R
 import java.text.ParseException
 import java.text.SimpleDateFormat

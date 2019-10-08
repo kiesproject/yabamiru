@@ -4,13 +4,14 @@ import android.content.Context
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
+import com.example.yabamiru.AddTask.AddTaskFragment
 
 class TabAdapter(fm:FragmentManager, private val context: Context): FragmentPagerAdapter(fm){
 
     override fun getItem(position: Int): Fragment {
         when(position){
             0 -> { return MainlistFragment() }
-            else ->  { return Tab02Fragment() }
+            else ->  { return AddTaskFragment() }
         }
     }
 
