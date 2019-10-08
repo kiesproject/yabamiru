@@ -28,9 +28,12 @@ class RecycleA(context:Context):RecyclerView.Adapter<RecycleA.Viewholder>(){
         holder.card.setBackgroundColor(taskTags[position].color)
         holder.tagName.text = taskTags[position].tagName
     }
-
+    fun setList(lists:List<TaskTags>){
+        this.taskTags = lists
+        notifyDataSetChanged()
+    }
     class Viewholder(view:View):RecyclerView.ViewHolder(view) {
-        val card = view.findViewById<CardView>(R.id.tag_cardview)
+        val card = view.findViewById<CardView>(R.id.tag_cardView)
         val tagName = view.findViewById<TextView>(R.id.tag_text)
     }
 
