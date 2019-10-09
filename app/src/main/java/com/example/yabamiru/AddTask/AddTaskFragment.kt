@@ -1,7 +1,6 @@
 package com.example.yabamiru.AddTask
 
 import android.app.Activity
-import android.arch.persistence.room.Room
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
@@ -13,124 +12,107 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import com.example.yabamiru.Data.*
+import com.example.yabamiru.DateFormatter
 import com.example.yabamiru.R
-import kotlinx.android.synthetic.main.task_edit_layout.*
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import kotlin.concurrent.thread
 
 class AddTaskFragment : Fragment() {
 
-    private val DATEPICKER_REQUEST_CODE = 1
-    private val TIMEPICKER_REQUEST_CODE = 2
+    private val DATEPICKER_REQUEST_CODE = 101
+    private val TIMEPICKER_REQUEST_CODE = 102
 
-    lateinit var titleEditText: EditText
-    lateinit var weightSeekBar: SeekBar
-    lateinit var dateEditText: EditText
-    lateinit var timeEditText: EditText
-    lateinit var tagEditText: EditText
-    lateinit var addTagButton: Button
-    lateinit var tagRecyclerView: RecyclerView
+    private val titleEditText: EditText by lazy {view!!.findViewById<EditText>(R.id.edit_title)}
+    private val weightSeekBar: SeekBar by lazy {view!!.findViewById<SeekBar>(R.id.edit_seekBar)}
+    private val dateEditText: EditText by lazy {view!!.findViewById<EditText>(R.id.edit_date)}
+    private val timeEditText: EditText by lazy {view!!.findViewById<EditText>(R.id.edit_time)}
+    private val tagEditText: EditText by lazy {view!!.findViewById<EditText>(R.id.edit_tag)}
+    private val memoEditText:EditText by lazy { view!!.findViewById<EditText>(R.id.edit_memo)}
+    private val addTagButton: Button by lazy {view!!.findViewById<Button>(R.id.button_tag)}
+    private val tagRecyclerView: RecyclerView by lazy {view!!.findViewById<RecyclerView>(R.id.edit_recyclerView)}
 
-    private val tagNameList = mutableListOf<String>()
+    private lateinit var adapter : TagRecyclerViewAdapter
     lateinit var db: AppDatabase
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.task_edit_layout, container, false)
+        return inflater.inflate(R.layout.app_edit, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        setViews()
-        db = Room.databaseBuilder(view.context, AppDatabase::class.java, "database").build()
+        setViews(view)
+        db = AppDatabase.getDatabase(this.requireContext())
     }
 
-    private fun setViews() {
-        val addTaskButton = view!!.findViewById<Button>(R.id.task_button_add)
-        addTaskButton.setOnClickListener(onClickListener(addTaskButton.id))
-        titleEditText = view!!.findViewById(R.id.task_edit_title)
-        weightSeekBar = view!!.findViewById(R.id.task_edit_seekBar)
-        dateEditText = view!!.findViewById(R.id.task_edit_date)
-        dateEditText.setOnFocusChangeListener { view, hasFocus ->
-            if (hasFocus) {
-                val newFragment = DatePick()
-                newFragment.setTargetFragment(this, DATEPICKER_REQUEST_CODE)
-                newFragment.show(fragmentManager, "datePicker")
+    private fun setViews(view:View) {
+        view.findViewById<Button>(R.id.button_add).setOnClickListener(onAddTaskButtonClicked())
+        addTagButton.setOnClickListener(onAddTagButtonClicked())
+        dateEditText.onFocusChangeListener = onDateEditTextFocusChanged()
+        timeEditText.onFocusChangeListener = onTimeEditTextFocusChanged()
 
-            }
-        }
-        timeEditText = view!!.findViewById(R.id.task_edit_time)
-        timeEditText.setOnFocusChangeListener { view, hasFocus ->
-            if (hasFocus) {
-                val newFragment = TimePick()
-                newFragment.setTargetFragment(this, TIMEPICKER_REQUEST_CODE)
-                newFragment.show(fragmentManager, "timePicker")
-            }
-        }
-        tagEditText = view!!.findViewById(R.id.task_edit_tag)
-        addTagButton = view!!.findViewById(R.id.task_button_tag)
-        addTagButton.setOnClickListener(onClickListener(addTagButton.id))
-        tagRecyclerView = view!!.findViewById(R.id.task_edit_recyclerView)
-        tagRecyclerView.layoutManager = LinearLayoutManager(view!!.context)
+        adapter = TagRecyclerViewAdapter(view.context)
+        tagRecyclerView.layoutManager = LinearLayoutManager(view.context)
+        tagRecyclerView.adapter = adapter
     }
 
-    private fun onClickListener(viewId: Int): View.OnClickListener {
-        when (viewId) {
-            R.id.task_button_add -> {
-                return View.OnClickListener {
-                    if (validation())
-                        addTask()
-                }
+    private fun onAddTagButtonClicked() = View.OnClickListener {
+        if(tagEditText.text.toString().isNotBlank() && tagEditText.text.toString().isNotEmpty()){
+           val tagName = tagEditText.text.toString()
+            if(adapter.tagList.count{it.tagName==tagName}==0){
+                val addedTaskTags = TaskTags(
+                    taskId = -1,
+                    tagName = tagName,
+                    color = Color.RED
+                )
+                adapter.addTags(addedTaskTags)
+                tagEditText.text.clear()
+                Toast.makeText(this.context, "タグを追加しました。", Toast.LENGTH_SHORT).show()
             }
-            R.id.task_button_tag -> {
-                return View.OnClickListener {
-                    addTag()
-                }
-            }
-        }
-        return View.OnClickListener { }
-    }
-
-    //タグの追加
-    private fun addTag() {
-        if (tagEditText.text.isEmpty() || tagEditText.text.isBlank()) {
-            Toast.makeText(this.context, "タグ名を入力してください。。", Toast.LENGTH_SHORT).show()
-        } else if (tagNameList.contains(tagEditText.text.toString())) {
-            Toast.makeText(this.context, "その名前のタグは追加済みです。", Toast.LENGTH_SHORT).show()
-        } else {
-            tagNameList.add(tagEditText.text.toString())
-            if (tagRecyclerView.adapter == null)
-                tagRecyclerView.adapter = TagRecyclerViewAdapter(this.context!!, tagNameList)
-            else {
-                tagRecyclerView.adapter!!.notifyItemInserted(tagNameList.size - 1)
-            }
-            Toast.makeText(this.context, "タグを追加しました。", Toast.LENGTH_SHORT).show()
-            tagEditText.setText("")
         }
     }
 
-    //dbへの追加処理
-    private fun addTask() {
-        val dateTime = dateEditText.text.toString() + " " + timeEditText.text.toString()
-        val pattern = SimpleDateFormat("yyyy/MM/dd HH:mm")
-        val time = pattern.parse(dateTime).time
-        val task = Task(
-            title = titleEditText.text.toString(), weight = weightSeekBar.progress, deadLine = time,
-            memo = view!!.findViewById<EditText>(R.id.edit_memo).text.toString(), isActive = true,finishedYabasa = 0f
-        )
-        thread {
-            val taskId = db.taskDao().insert(task)
-            val allTagList = db.tagDao().getAll().value ?: mutableListOf<Tag>()
-            val taskTags = mutableListOf<TaskTags>()
-            tagNameList.forEach { tagName ->
-                val filtered: List<Tag>? = allTagList.filter { it.name == tagName }
-                if (filtered != null) {
-                    val tagId = db.tagDao().insert(Tag(name = tagName, color = Color.RED))
-                    taskTags.add(TaskTags(tagId[0], taskId[0]))
-                } else {
-                    taskTags.add(TaskTags(allTagList.filter { it.name == tagName }[0].tagId, taskId[0]))
-                }
+    private fun onAddTaskButtonClicked() = View.OnClickListener {
+        if(validation()){
+            val task = Task(
+                title = titleEditText.text.toString(),
+                weight = weightSeekBar.progress,
+                deadLine = DateFormatter.strToTime(dateEditText.text.toString()+timeEditText.text.toString()),
+                memo = memoEditText.text.toString(),
+                isActive = true)
+            thread{
+                val taskId = db.taskDao().insert(task)
+                val taskTagsList = adapter.tagList
+                taskTagsList.map { it.taskId=taskId[0] }
+                db.taskTagsDao().insert(*taskTagsList.toTypedArray())
             }
-            db.taskTagsDao().insert(*taskTags.toTypedArray())
+            Toast.makeText(this.context,"タスクを追加しました。",Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun onDateEditTextFocusChanged() = View.OnFocusChangeListener { view, hasFocus ->
+        if (hasFocus) {
+            val newFragment = DatePick()
+            newFragment.setTargetFragment(this, DATEPICKER_REQUEST_CODE)
+            newFragment.show(fragmentManager, "datePicker")
+
+        }
+    }
+
+    private fun onTimeEditTextFocusChanged() = View.OnFocusChangeListener { view, hasFocus ->
+        if (hasFocus) {
+            val newFragment = TimePick()
+            newFragment.setTargetFragment(this, TIMEPICKER_REQUEST_CODE)
+            newFragment.show(fragmentManager, "timePicker")
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (requestCode == DATEPICKER_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
+            val date = data?.getStringExtra("selectedDate")
+            dateEditText.setText(date)
+        } else if (requestCode == TIMEPICKER_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
+            val time = data?.getStringExtra("selectedTime")
+            timeEditText.setText(time)
         }
     }
 
@@ -170,7 +152,7 @@ class AddTaskFragment : Fragment() {
         }
 
         //タグチェック
-        if (tagNameList.size == 0) {
+        if (adapter.tagList.isEmpty()) {
             flg = false
             str += "\nタグを１つ以上選択してください。"
         }
@@ -181,13 +163,5 @@ class AddTaskFragment : Fragment() {
     }
 
     //datePicker,timePickerからの返答後の処理
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        if (requestCode == DATEPICKER_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
-            val date = data?.getStringExtra("selectedDate")
-            dateEditText.setText(date)
-        } else if (requestCode == TIMEPICKER_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
-            val time = data?.getStringExtra("selectedTime")
-            timeEditText.setText(time)
-        }
-    }
+
 }
