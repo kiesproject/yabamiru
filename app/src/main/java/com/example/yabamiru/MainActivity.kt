@@ -6,7 +6,6 @@ import android.support.design.widget.TabLayout
 import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
 import com.example.yabamiru.Data.AppDatabase
-import com.example.yabamiru.Data.Tag
 import com.example.yabamiru.Data.Task
 import com.example.yabamiru.Data.TaskTagsDao
 import kotlin.concurrent.thread

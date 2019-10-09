@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.main_list_row.view.*
 class RecyclerAdapter(
     private val context: Context, private val itemClickListener: RecyclerViewHolder.ItemClickListener,
     private val itemTitles: List<String>, private val itemDeadlines: List<Long>,
-    private val itemPercents: List<Int>, private val itemTags: MutableSet<TagRecyclerAdapter>
+    private val itemPercents: List<Int>, private val itemTags: MutableList<TagRecyclerAdapter>
 ) : RecyclerView.Adapter<RecyclerAdapter.RecyclerViewHolder>() {
     //ViewのonClick時に、タップされたViewがRecyclerViewの何番目にあたるかを取得して返します
 
