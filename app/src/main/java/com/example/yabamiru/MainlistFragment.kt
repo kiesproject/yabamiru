@@ -8,8 +8,9 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Adapter
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Spinner
 import android.widget.Toast
 import com.example.yabamiru.Data.AppDatabase
 import kotlinx.android.synthetic.main.fragment_mainlist.*
@@ -18,17 +19,29 @@ class MainlistFragment : Fragment(), RecyclerAdapter.RecyclerViewHolder.ItemClic
 
     lateinit var db: AppDatabase
 
-    val titles: MutableList<String> = mutableListOf()
-    val deadlines: MutableList<Long> = mutableListOf()
-    val percents: MutableList<Int> = mutableListOf()
-    lateinit var tagsadapter:TagRecyclerAdapter
-    val tagsadapterlist: MutableList<TagRecyclerAdapter> = mutableListOf()
-    private val recycleradapter: RecyclerAdapter by lazy {RecyclerAdapter(view!!.context, this, titles, deadlines, percents, tagsadapterlist)}
+    val taskIds = mutableSetOf<Long>()
+    val titles = mutableListOf<String>()
+    val deadLines = mutableListOf<Long>()
+    val percents = mutableListOf<Int>()
+    lateinit var tagsadapter: TagRecyclerAdapter
+    val tagsadapterlist = mutableListOf<TagRecyclerAdapter>()
+    private val recycleradapter by lazy {
+        RecyclerAdapter(
+            view!!.context,
+            this,
+            titles,
+            deadLines,
+            percents,
+            tagsadapterlist
+        )
+    }
+    val cardList = mutableListOf<Card>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         db = AppDatabase.getDatabase(this.requireContext())
+
         main_recyclerView.layoutManager =
             LinearLayoutManager(view.context, LinearLayoutManager.VERTICAL, false)
         main_recyclerView.adapter = recycleradapter
@@ -37,15 +50,25 @@ class MainlistFragment : Fragment(), RecyclerAdapter.RecyclerViewHolder.ItemClic
         db.taskDao().loadTaskAndTaskTags().observe(this, Observer { taskandtagslist ->
             if (taskandtagslist != null) {
                 taskandtagslist.forEach { taskandtags ->
-                    titles.add(taskandtags.task.title)
-                    deadlines.add(taskandtags.task.deadLine)
-                    percents.add(taskandtags.task.weight)
-                    val tags: MutableList<String> = mutableListOf()
-                    taskandtags.taskTags.forEach { tasktag ->
-                        tags.add(tasktag.tagName)
+                    if (taskandtags.task.taskId in taskIds) {
+                    } else {
+
+
+                        val tags: MutableList<String> = mutableListOf()
+                        taskandtags.taskTags.forEach { tasktag ->
+                            tags.add(tasktag.tagName)
+                        }
+                        tagsadapter = TagRecyclerAdapter(tags)
+                        setTask(
+                            taskandtags.task.taskId,
+                            taskandtags.task.title,
+                            taskandtags.task.deadLine,
+                            taskandtags.task.weight,
+                            tagsadapter
+                        )
+                        val card = Card(taskandtags.task.taskId, taskandtags.task.title,taskandtags.task.deadLine, taskandtags.task.weight, tagsadapter)
+                        cardList.add(card)
                     }
-                    tagsadapter = TagRecyclerAdapter(tags)
-                    tagsadapterlist.add(tagsadapter)
                 }
             }
             recycleradapter.notifyDataSetChanged()
@@ -65,6 +88,27 @@ class MainlistFragment : Fragment(), RecyclerAdapter.RecyclerViewHolder.ItemClic
         main_spinner_button.adapter = spinneradapter
 
 
+        main_spinner_button.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?, position: Int, id: Long
+            ) {
+                val spinnerParent = parent as Spinner
+                val item = spinnerParent.selectedItem as String
+
+                sortCard(item)
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            }
+
+        }
+
+//        temporary_add_task_button.setOnClickListener {
+//            sortCard("")
+//        }
     }
 
     override fun onCreateView(
@@ -77,5 +121,42 @@ class MainlistFragment : Fragment(), RecyclerAdapter.RecyclerViewHolder.ItemClic
 
     override fun onItemClick(view: View, position: Int) {
         Toast.makeText(view.context, "position $position was tapped", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun sortCard(status: String) {
+        when (status) {
+            "降順" -> {
+                val sortValues = percents.zip(cardList) as MutableList
+                sortValues.sortBy { it.first }
+                val sortedCards = sortValues.unzip().second as MutableList<Card>
+                Log.d("mainlistfragment", "${sortedCards}")
+
+//                sortedtaskids.forEach{taskid ->
+//
+//                }
+//                recycleradapter.notifyDataSetChanged()
+            }
+        }
+    }
+
+    data class Card(val taskId: Long,
+                    val title: String,
+                    val deadLine: Long,
+                    val weight: Int,
+                    val tagsadapter: TagRecyclerAdapter)
+
+
+    private fun setTask(
+        taskId: Long,
+        title: String,
+        deadLine: Long,
+        weight: Int,
+        tagsadapter: TagRecyclerAdapter
+    ) {
+        taskIds.add(taskId)
+        titles.add(title)
+        deadLines.add(deadLine)
+        percents.add(weight)
+        tagsadapterlist.add(tagsadapter)
     }
 }
