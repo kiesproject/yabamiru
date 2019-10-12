@@ -34,7 +34,7 @@ abstract class AppDatabase : RoomDatabase() {
                     AppDatabase::class.java,
                     "task_database"
                 )
-                    .addCallback(RoomDatabaseCallback())    //初期データを用いない場合はこの行をコメントアウトする。
+//                    .addCallback(RoomDatabaseCallback())    //初期データを用いない場合はこの行をコメントアウトする。
                     .build()
                 INSTANCE = instance
                 return instance
@@ -63,7 +63,7 @@ abstract class AppDatabase : RoomDatabase() {
                 title = "専門ゼミ",
                 deadLine = DateFormatter.strToTime("2019/10/1112:23"),
                 isActive = true,
-                weight = 5,
+                weight = 10,
                 memo = "5-101")
             val taskId1 = taskDao.insert(task1)[0]
             //タスク①のタグリスト

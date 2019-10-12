@@ -1,45 +1,111 @@
 package com.example.yabamiru
 
-import android.support.v7.app.AppCompatActivity
+import android.arch.lifecycle.Observer
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.SearchView
+import android.widget.Spinner
+import com.example.yabamiru.Data.AppDatabase
+import com.example.yabamiru.Data.TaskAndTaskTags
 import kotlinx.android.synthetic.main.fragment_mainlist.*
 
-class MainlistFragment : Fragment(), RecyclerAdapter.RecyclerViewHolder.ItemClickListener {
+class MainlistFragment : Fragment() {
+
+    lateinit var db: AppDatabase
+
+    lateinit var taskAndTaskTagsList: List<TaskAndTaskTags>
+
+    private val recyclerAdapter by lazy { RecyclerAdapter(view!!.context) }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val titles = resources.getStringArray(R.array.titles).toMutableList()
-        val deadlines = resources.getStringArray(R.array.deadlines).toMutableList()
-        val percents = resources.getStringArray(R.array.percents).toMutableList()
+        db = AppDatabase.getDatabase(this.requireContext())
 
-        val tags1 = resources.getStringArray(R.array.tags1).toMutableList()
-        val adapter1 = TagRecyclerAdapter(tags1)
-        val tags2 = resources.getStringArray(R.array.tags2).toMutableList()
-        val adapter2 = TagRecyclerAdapter(tags2)
-        val tags3 = resources.getStringArray(R.array.tags3).toMutableList()
-        val adapter3 = TagRecyclerAdapter(tags3)
-        val tags4 = resources.getStringArray(R.array.tags4).toMutableList()
-        val adapter4 = TagRecyclerAdapter(tags4)
-        val tags5 = resources.getStringArray(R.array.tags5).toMutableList()
-        val adapter5 = TagRecyclerAdapter(tags5)
-        val adapterlist = mutableListOf(adapter1, adapter2, adapter3, adapter4, adapter5)
+        main_recyclerView.layoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        main_recyclerView.adapter = recyclerAdapter
 
-        main_recyclerView.adapter = RecyclerAdapter(view.context, this, titles, deadlines, percents, adapterlist)
-        main_recyclerView.layoutManager = LinearLayoutManager(view.context, LinearLayoutManager.VERTICAL, false)
+
+        db.taskDao().loadTaskAndTaskTags().observe(this, Observer { taskAndTaskTagsList ->
+            if (taskAndTaskTagsList != null) {
+                this.taskAndTaskTagsList = taskAndTaskTagsList
+                recyclerAdapter.setList(taskAndTaskTagsList)
+            }
+        })
+
+        ArrayAdapter.createFromResource(
+            context,
+            R.array.fragment_mainlist_spinner_values,
+            android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            main_spinner_button.adapter = adapter
+        }
+
+        main_spinner_button.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?, position: Int, id: Long
+            ) {
+                val spinnerParent = parent as Spinner
+                val item = spinnerParent.selectedItem as String
+
+                sortCard(item)
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                return
+            }
+        }
+        main_layout_searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                if (newText != null && newText.isNotEmpty()) {
+                    recyclerAdapter.setList(taskAndTaskTagsList.filter {
+                        it.task.title.contains(
+                            newText.toLowerCase()
+                        )
+                    })
+                } else {
+                    recyclerAdapter.setList(taskAndTaskTagsList)
+                }
+
+                return false
+            }
+        })
     }
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         return inflater.inflate(R.layout.fragment_mainlist, container, false)
     }
 
-    override fun onItemClick(view: View, position: Int) {
-        Toast.makeText(view.context, "position $position was tapped", Toast.LENGTH_SHORT).show()
+    private fun sortCard(status: String) {
+        when (status) {
+            "昇順" -> {
+                recyclerAdapter.setList(taskAndTaskTagsList.sortedBy { it.task.weight })
+            }
+            "降順" -> {
+
+                recyclerAdapter.setList(taskAndTaskTagsList.sortedByDescending { it.task.weight })
+            }
+
+        }
     }
 }
