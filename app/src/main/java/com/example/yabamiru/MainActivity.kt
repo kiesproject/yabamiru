@@ -6,9 +6,6 @@ import android.support.design.widget.TabLayout
 import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
 import com.example.yabamiru.Data.AppDatabase
-import com.example.yabamiru.Data.Task
-import com.example.yabamiru.Data.TaskTagsDao
-import kotlin.concurrent.thread
 
 
 class MainActivity : AppCompatActivity() {
@@ -26,20 +23,5 @@ class MainActivity : AppCompatActivity() {
         viewPager.adapter = TabAdapter(supportFragmentManager,this)
         val tabLayout = findViewById<TabLayout>(R.id.tab_layout)
         tabLayout.setupWithViewPager(viewPager)
-
-
-//        //Databaseの仮置き
-//        val task = Task(
-//            title = "MyTitle",
-//            weight = 10,
-//            deadLine = 10,
-//            memo = "MyMemo",
-//            isActive = true,
-//            finishedYabasa = 0f
-//        )
-//
-//        thread {
-//            db.taskDao().insert(task)
-//        }
     }
 }
