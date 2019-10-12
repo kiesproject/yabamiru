@@ -4,11 +4,13 @@ import android.arch.lifecycle.Observer
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.SearchView
 import android.widget.Spinner
 import com.example.yabamiru.Data.AppDatabase
 import com.example.yabamiru.Data.TaskAndTaskTags
@@ -28,7 +30,7 @@ class MainlistFragment : Fragment() {
         db = AppDatabase.getDatabase(this.requireContext())
 
         main_recyclerView.layoutManager =
-            LinearLayoutManager(view.context, LinearLayoutManager.VERTICAL, false)
+            LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         main_recyclerView.adapter = recycleradapter
 
 
@@ -39,19 +41,14 @@ class MainlistFragment : Fragment() {
             }
         })
 
-        val spinnerItems = arrayOf(
-            "昇順",
-            "降順"
-        )
-
-        val spinneradapter = ArrayAdapter(
-            getActivity()!!.getApplicationContext(),
-            android.R.layout.simple_spinner_item,
-            spinnerItems
-        )
-        spinneradapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        main_spinner_button.adapter = spinneradapter
-
+        ArrayAdapter.createFromResource(
+            context,
+            R.array.fragment_mainlist_spinner_values,
+            android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            main_spinner_button.adapter = adapter
+        }
 
         main_spinner_button.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
 
@@ -68,8 +65,27 @@ class MainlistFragment : Fragment() {
             override fun onNothingSelected(parent: AdapterView<*>?) {
                 TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
             }
-
         }
+        main_layout_searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                if (newText != null && newText.isNotEmpty()) {
+                    recycleradapter.setList(taskAndTaskTagsList.filter {
+                        it.task.title.contains(
+                            newText.toLowerCase()
+                        )
+                    })
+                } else {
+                    recycleradapter.setList(taskAndTaskTagsList)
+                }
+
+                return false
+            }
+        })
     }
 
     override fun onCreateView(
