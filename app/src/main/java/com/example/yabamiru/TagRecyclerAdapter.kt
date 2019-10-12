@@ -9,7 +9,7 @@ import android.widget.TextView
 import com.example.yabamiru.Data.TaskTags
 import kotlinx.android.synthetic.main.activity_tag.view.*
 
-class  TagRecyclerAdapter(val context: Context, val taskTagsList:List<TaskTags>): RecyclerView.Adapter<TagRecyclerAdapter.TagRecyclerViewHolder>() {
+class  TagRecyclerAdapter(val context: Context,private val taskTagsList:List<TaskTags>): RecyclerView.Adapter<TagRecyclerAdapter.TagRecyclerViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TagRecyclerViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)

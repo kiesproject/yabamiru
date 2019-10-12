@@ -24,11 +24,11 @@ class RecyclerAdapter(val context: Context) :
                 Toast.makeText(context, "position $position was tapped", Toast.LENGTH_SHORT).show()
             }
             itemImageView.setImageResource(R.drawable.dokuro_blue)
-            itemTitleView.text = taskAndTaskTagsList.get(position).task.title
-            itemDeadlineView.text = taskAndTaskTagsList.get(position).task.deadLine.toString()
-            itemPercent.text = taskAndTaskTagsList.get(position).task.weight.toString()
-            taskAndTaskTagsList.get(position).taskTags
-            itemTags.adapter = TagRecyclerAdapter(context, taskAndTaskTagsList.get(position).taskTags)
+            itemTitleView.text = taskAndTaskTagsList[position].task.title
+            itemDeadlineView.text = taskAndTaskTagsList[position].task.deadLine.toString()
+            itemPercent.text = taskAndTaskTagsList[position].task.weight.toString()
+            taskAndTaskTagsList[position].taskTags
+            itemTags.adapter = TagRecyclerAdapter(context, taskAndTaskTagsList[position].taskTags)
             itemTags.layoutManager =
                 LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         }

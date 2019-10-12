@@ -22,7 +22,7 @@ class MainlistFragment : Fragment() {
 
     lateinit var taskAndTaskTagsList: List<TaskAndTaskTags>
 
-    private val recycleradapter by lazy { RecyclerAdapter(view!!.context) }
+    private val recyclerAdapter by lazy { RecyclerAdapter(view!!.context) }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,13 +31,13 @@ class MainlistFragment : Fragment() {
 
         main_recyclerView.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-        main_recyclerView.adapter = recycleradapter
+        main_recyclerView.adapter = recyclerAdapter
 
 
         db.taskDao().loadTaskAndTaskTags().observe(this, Observer { taskAndTaskTagsList ->
             if (taskAndTaskTagsList != null) {
                 this.taskAndTaskTagsList = taskAndTaskTagsList
-                recycleradapter.setList(taskAndTaskTagsList)
+                recyclerAdapter.setList(taskAndTaskTagsList)
             }
         })
 
@@ -63,7 +63,7 @@ class MainlistFragment : Fragment() {
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                return
             }
         }
         main_layout_searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
@@ -74,13 +74,13 @@ class MainlistFragment : Fragment() {
 
             override fun onQueryTextChange(newText: String?): Boolean {
                 if (newText != null && newText.isNotEmpty()) {
-                    recycleradapter.setList(taskAndTaskTagsList.filter {
+                    recyclerAdapter.setList(taskAndTaskTagsList.filter {
                         it.task.title.contains(
                             newText.toLowerCase()
                         )
                     })
                 } else {
-                    recycleradapter.setList(taskAndTaskTagsList)
+                    recyclerAdapter.setList(taskAndTaskTagsList)
                 }
 
                 return false
@@ -99,11 +99,11 @@ class MainlistFragment : Fragment() {
     private fun sortCard(status: String) {
         when (status) {
             "昇順" -> {
-                recycleradapter.setList(taskAndTaskTagsList.sortedBy { it.task.weight })
+                recyclerAdapter.setList(taskAndTaskTagsList.sortedBy { it.task.weight })
             }
             "降順" -> {
 
-                recycleradapter.setList(taskAndTaskTagsList.sortedByDescending { it.task.weight })
+                recyclerAdapter.setList(taskAndTaskTagsList.sortedByDescending { it.task.weight })
             }
 
         }
