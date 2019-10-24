@@ -16,7 +16,7 @@ class RecycleA(context:Context):RecyclerView.Adapter<RecycleA.Viewholder>(){
     private var taskTags = emptyList<TaskTags>()
     override fun onCreateViewHolder(parent: ViewGroup, position: Int): Viewholder {
         var inflater = LayoutInflater.from(parent.context)
-        var view = inflater.inflate(R.layout.activity_tag,parent,false)
+        var view = inflater.inflate(R.layout.rowstag,parent,false)
         return Viewholder(view)
     }
 

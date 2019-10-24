@@ -2,8 +2,6 @@
 <android.support.v7.widget.CardView
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:card_view="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/tag_cardView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -14,7 +12,7 @@
         app:contentPaddingRight="4dp">
 
     <TextView
-            android:id="@+id/tag_text"
+            android:id="@+id/rowstag_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"

@@ -7,13 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import com.example.yabamiru.Data.TaskTags
-import kotlinx.android.synthetic.main.activity_tag.view.*
+import kotlinx.android.synthetic.main.rowstag.view.*
 
 class  TagRecyclerAdapter(val context: Context,private val taskTagsList:List<TaskTags>): RecyclerView.Adapter<TagRecyclerAdapter.TagRecyclerViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TagRecyclerViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
-        val view = layoutInflater.inflate(R.layout.activity_tag, parent, false)
+        val view = layoutInflater.inflate(R.layout.rowstag, parent, false)
         return TagRecyclerViewHolder(view)
     }
 
@@ -28,6 +28,6 @@ class  TagRecyclerAdapter(val context: Context,private val taskTagsList:List<Tas
     }
 
     class TagRecyclerViewHolder(var view: View): RecyclerView.ViewHolder(view){
-        val text: TextView = view.tag_text
+        val text: TextView = view.rowstag_text_view
     }
 }

@@ -11,7 +11,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import com.example.yabamiru.Data.TaskAndTaskTags
-import kotlinx.android.synthetic.main.main_list_row.view.*
+import kotlinx.android.synthetic.main.list_row.view.*
 
 class RecyclerAdapter(val context: Context) :
     RecyclerView.Adapter<RecyclerAdapter.RecyclerViewHolder>() {
@@ -40,7 +40,7 @@ class RecyclerAdapter(val context: Context) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerViewHolder {
         val layoutInflater = LayoutInflater.from(context)
-        val mView = layoutInflater.inflate(R.layout.main_list_row, parent, false)
+        val mView = layoutInflater.inflate(R.layout.list_row, parent, false)
         return RecyclerViewHolder(mView)
     }
 

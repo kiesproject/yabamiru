@@ -20,7 +20,7 @@ class EditTagRecyclerViewAdapter(
     private var inflater = LayoutInflater.from(context)
 
     override fun onCreateViewHolder(parent: ViewGroup, position: Int): TagListViewHolder {
-        val view = inflater.inflate(R.layout.activity_tag,parent,false)
+        val view = inflater.inflate(R.layout.rowstag,parent,false)
         return TagListViewHolder(view)
     }
 
