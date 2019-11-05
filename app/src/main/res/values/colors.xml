@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorPrimary">#FB8200</color>
+    <color name="colorPrimaryShadow">#90FB8200</color>
+    <color name="colorBackground">#FFEEEA</color>
+    <color name="colorPrimaryDark">#FB8200</color>
     <color name="colorAccent">#D81B60</color>
     <color name="colorCardBackground">#EBFACA</color>
     <color name="colorCardTag"> #ffd12a</color>
+    <color name="colorViewBackground">#ffffff</color>
 </resources>
