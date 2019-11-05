@@ -1,7 +1,7 @@
-package com.example.yabamiru.Data
+package com.example.yabamiru.data.model
 
-import android.arch.persistence.room.Entity
-import android.arch.persistence.room.PrimaryKey
+import androidx.room.*
+import java.util.*
 
 @Entity
 data class Task constructor(
@@ -9,6 +9,7 @@ data class Task constructor(
     var taskId:Long=0,
     var title:String="",
     var weight:Int,
+    val timeStump :Long = Date().time,
     var deadLine:Long,
     var memo:String,
     var isActive:Boolean

@@ -1,8 +1,7 @@
-package com.example.yabamiru.Data
+package com.example.yabamiru.data.model
 
-import android.arch.persistence.room.Entity
-import android.arch.persistence.room.ForeignKey
 import android.graphics.Color
+import androidx.room.*
 
 @Entity(
     primaryKeys = ["tagName", "taskId"],
