@@ -1,19 +1,25 @@
-package com.example.yabamiru.Data
+package com.example.yabamiru.data.dao
 
-import android.arch.lifecycle.LiveData
-import android.arch.persistence.room.*
+
+import androidx.lifecycle.LiveData
+import androidx.room.*
+import com.example.yabamiru.data.model.TaskTags
+
 
 @Dao
 interface TaskTagsDao{
 
     @Query("SELECT * FROM TaskTags")
-    fun getAll():LiveData<List<TaskTags>>
+    fun getAll(): LiveData<List<TaskTags>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(vararg taskTags: TaskTags):List<Long>
 
     @Delete
     fun delete(taskTags: TaskTags)
+
+    @Query("DELETE FROM TaskTags WHERE taskId=(:taskId)")
+    fun deleteByTaskId(taskId:Long)
 
     @Update
     fun update(taskTags: TaskTags)
