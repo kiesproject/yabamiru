@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+            android:icon="@drawable/ic_sort_black_24dp"
+            android:title="taskList_sort"
+            app:showAsAction="always">
+        <menu>
+            <item
+                    android:id="@+id/taskList_sortByTitle_asc"
+                    android:title="タイトル(昇順)"
+                    app:showAsAction="never" />
+            <item
+                    android:id="@+id/taskList_sortByTitle_desc"
+                    android:title="タイトル(降順)"
+                    app:showAsAction="never" />
+        </menu>
+    </item>
+    <item
+            android:icon="@drawable/ic_filter_list_black_24dp"
+            android:title="taskList_filter"
+            app:showAsAction="always">
+
+        <menu>
+            <item
+                    android:id="@+id/taskList_filter_all"
+                    android:title="全てのタスク"
+                    app:showAsAction="never" />
+            <item
+                    android:id="@+id/taskList_filter_active"
+                    android:title="進行中のタスク"
+                    app:showAsAction="never" />
+            <item
+                    android:id="@+id/taskList_filter_completed"
+                    android:title="完了したタスク"
+                    app:showAsAction="never" />
+        </menu>
+    </item>
+</menu>

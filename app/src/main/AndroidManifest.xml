@@ -11,7 +11,7 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
 
-        <activity android:name=".MainActivity">
+        <activity android:name=".taskList.TaskListActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -19,9 +19,22 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".EditPage.EditActivity">
+        <activity android:name=".detailTask.DetailTaskActivity">
 
         </activity>
+
+        <activity android:name=".addTask.AddTaskActivity">
+
+        </activity>
+
+        <activity android:name=".editTask.EditTaskActivity">
+
+        </activity>
+
+        <meta-data
+                android:name="preloaded_fonts"
+                android:resource="@array/preloaded_fonts" />
+
     </application>
 
 </manifest>

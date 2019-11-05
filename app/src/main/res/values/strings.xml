@@ -1,28 +1,24 @@
 <resources>
-    <string name="app_name">yabamiru!</string>
-    <string-array name="fragment_mainlist_spinner_values">
-        <item>昇順</item>
-        <item>降順</item>
-    </string-array>
-
-    <string name="max_yabasa">最高危険度 %1$d%%</string>
-    <string name="min_yabasa">最低危険度 %1$d%%</string>
-    <string name="average_yabasa">平均危険度 %1$d%%</string>
-    <string name="card_dead_line">Dead Line : %1$2d/%2$d  %3$d:%4$d</string>
-    <string name="card_title">Title : %1$s</string>
-    <string name="card_percent">%1$d%%</string>
-    <string name="input_hint_title">Titleを入力</string>
-    <string name="title_weight">重み:</string>
-    <string name="title_deadline">期限:</string>
-    <string name="input_hint_day">日付を入力</string>
-    <string name="input_hint_time">時間を入力</string>
-    <string name="title_tag">タグ:</string>
-    <string name="title_memo">メモ:</string>
-    <string name="dead">死</string>
-    <string name="easy">楽</string>
-    <string name="title_title">Title:</string>
-    <string name="input_hint_memo">メモを入力</string>
-    <string name="add">追加</string>
-    <string name="add_plan">予定を追加</string>
-    <string name="input_hint_tag">タグを入力</string>
+    <string name="app_name">ヤバみる!</string>
+    <string name="title">Title</string>
+    <string name="weight">Weight</string>
+    <string name="memo">Memo</string>
+    <string name="complete">Complete</string>
+    <string name="active">Active</string>
+    <string name="tags">Tags</string>
+    <string name="deadline">Deadline</string>
+    <string name="yabasa">ヤバさ:</string>
+    <string name="now_yabasa">現在のヤバさ</string>
+    <string name="add_task">タスクを追加</string>
+<string name="the_tag_already_added">そのタグはすでに登録されています。</string>
+    <string name="max_number_of_tags_is_five">一度に登録できるタグは5つまでです。</string>
+    <string name="saved_task">タスクを保存しました。</string>
+    <string name="cannot_save_task">タスクを登録できませんでした。</string>
+    <string name="input_correct_title">\nタイトルを正しく入力してください</string>
+    <string name="add_at_least_1_tag">\nタグは１つ以上登録してください</string>
+    <string name="input_future_date">\n未来の日付を入力してください</string>
+    <string name="input_date">\n日付を入力してください</string>
+    <string name="input_time">\n時間を入力してください</string>
+    <string name="input_correct_date">\n正しい日付を入力してください</string>
+    <string name="input_correct_time">\n正しい時間を入力してください</string>
 </resources>
