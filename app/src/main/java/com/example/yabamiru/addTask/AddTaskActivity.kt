@@ -110,6 +110,7 @@ class AddTaskActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener,
 
     fun onFabClicked(view: View) {
         if (validation()) {
+            view.isClickable=false
             saveTask()
             Toast.makeText(this, getString(R.string.saved_task), Toast.LENGTH_SHORT).show()
         }
