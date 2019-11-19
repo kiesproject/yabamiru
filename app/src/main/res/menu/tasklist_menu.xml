@@ -2,8 +2,8 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-            android:icon="@drawable/ic_sort_black_24dp"
-            android:title="taskList_sort"
+            android:icon="@drawable/sort"
+            android:iconTint="@android:color/white"
             app:showAsAction="always">
         <menu>
             <item
