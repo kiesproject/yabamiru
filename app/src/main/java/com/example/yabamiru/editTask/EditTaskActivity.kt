@@ -2,12 +2,11 @@ package com.example.yabamiru.editTask
 
 import android.app.*
 import android.graphics.Color
+import android.graphics.PorterDuff
 import android.os.Bundle
+import android.text.Html
 import android.view.View
-import android.widget.DatePicker
-import android.widget.LinearLayout
-import android.widget.TimePicker
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.DialogFragment
 import com.example.yabamiru.R
@@ -17,8 +16,10 @@ import com.example.yabamiru.util.PxDpConverter
 import com.google.android.material.chip.Chip
 import androidx.lifecycle.Observer
 import com.example.yabamiru.data.Constant
+import com.example.yabamiru.data.ConstantColor
 import com.example.yabamiru.data.model.Task
 import com.example.yabamiru.data.model.TaskTags
+import kotlinx.android.synthetic.main.activity_add_task.*
 import kotlinx.android.synthetic.main.activity_edit_task.*
 import java.util.*
 import kotlin.concurrent.thread
@@ -38,6 +39,9 @@ class EditTaskActivity() : AppCompatActivity(), TimePickerDialog.OnTimeSetListen
         setTitle("タスクの編集")
 
         db = AppDatabase.getDatabase(this)
+
+        setColor()
+
         taskId = intent.getLongExtra("taskId", -1)
         if (taskId != -1L) {
             db.taskDao().loadTaskAndTaskTagsByTaskId(taskId).observe(this, Observer {
@@ -83,6 +87,7 @@ class EditTaskActivity() : AppCompatActivity(), TimePickerDialog.OnTimeSetListen
                                     PxDpConverter.dp2Px(4f, context).toInt()
                                 )
                             }
+                            setChipBackgroundColorResource(ConstantColor.nowColorSet.colorTagBackground)
                             text = taskTags.tagName
                             isCheckable = false
                             isCloseIconEnabled = true
@@ -120,6 +125,7 @@ class EditTaskActivity() : AppCompatActivity(), TimePickerDialog.OnTimeSetListen
                                                 PxDpConverter.dp2Px(4f, context).toInt()
                                             )
                                         }
+                                        setChipBackgroundColorResource(ConstantColor.nowColorSet.colorTagBackground)
                                         text = editTask_tagName_editText.text.toString()
                                         isCheckable = false
                                         isCloseIconEnabled = true
@@ -233,6 +239,71 @@ class EditTaskActivity() : AppCompatActivity(), TimePickerDialog.OnTimeSetListen
     override fun onDateSet(p0: DatePicker?, year: Int, month: Int, day: Int) {
         editTask_date_editText.setText(String.format("%04d/%02d/%02d", year, month + 1, day))
         editTask_date_editText.clearFocus()
+    }
+
+    private fun setColor() {
+        val dummyDrawable = getDrawable(R.drawable.dummy)
+        dummyDrawable?.let {
+            it.setColorFilter(getColor(ConstantColor.nowColorSet.colorPrimary), PorterDuff.Mode.SRC)
+        }
+        supportActionBar?.setBackgroundDrawable(dummyDrawable)
+        val titleColor = getColor(ConstantColor.nowColorSet.colorTitleText)
+        val htmlColor = String.format(
+            Locale.US, "#%06X",
+            0xFFFFFF and Color.argb(
+                0,
+                Color.red(titleColor),
+                Color.green(titleColor),
+                Color.blue(titleColor)
+            )
+        )
+        val titleHtml = "<font color=\"$htmlColor\">${"タスクを追加"}</font>"
+        supportActionBar?.setTitle(Html.fromHtml(titleHtml))
+
+
+        editTask_layout.setBackgroundResource(ConstantColor.nowColorSet.colorWindowBackground)
+        editTask_fab.backgroundTintList =
+            getColorStateList(ConstantColor.nowColorSet.colorFabBackground)
+
+
+
+        editTask_weight_layout.apply {
+            setBackgroundResource(ConstantColor.nowColorSet.colorCardBackground)
+        }
+        editTask_title_editText.apply {
+            setBackgroundResource(ConstantColor.nowColorSet.colorCardBackground)
+            setHintTextColor(getColor(ConstantColor.nowColorSet.colorText))
+            setTextColor(getColor(ConstantColor.nowColorSet.colorText))
+        }
+        editTask_date_editText.apply {
+            setBackgroundResource(ConstantColor.nowColorSet.colorCardBackground)
+            setHintTextColor(getColor(ConstantColor.nowColorSet.colorText))
+            setTextColor(getColor(ConstantColor.nowColorSet.colorText))
+        }
+        editTask_time_editText.apply {
+            setBackgroundResource(ConstantColor.nowColorSet.colorCardBackground)
+            setHintTextColor(getColor(ConstantColor.nowColorSet.colorText))
+            setTextColor(getColor(ConstantColor.nowColorSet.colorText))
+        }
+        editTask_tagName_editText.apply {
+            setBackgroundResource(ConstantColor.nowColorSet.colorCardBackground)
+            setHintTextColor(getColor(ConstantColor.nowColorSet.colorText))
+            setTextColor(getColor(ConstantColor.nowColorSet.colorText))
+        }
+        editTask_memo_editText.apply {
+            setBackgroundResource(ConstantColor.nowColorSet.colorCardBackground)
+            setHintTextColor(getColor(ConstantColor.nowColorSet.colorText))
+            setTextColor(getColor(ConstantColor.nowColorSet.colorText))
+        }
+
+        findViewById<TextView>(R.id.addTask_weight_textView).setTextColor(getColor(ConstantColor.nowColorSet.colorText))
+        findViewById<TextView>(R.id.addTask_deadline_textView).setTextColor(getColor(ConstantColor.nowColorSet.colorText))
+        findViewById<TextView>(R.id.addTask_tags_textView).setTextColor(getColor(ConstantColor.nowColorSet.colorText))
+        findViewById<TextView>(R.id.raku_textView).setTextColor(getColor(ConstantColor.nowColorSet.colorText))
+        findViewById<TextView>(R.id.shi_textView).setTextColor(getColor(ConstantColor.nowColorSet.colorText))
+
+        editTask_addTag_button.setBackgroundResource(ConstantColor.nowColorSet.colorFabBackground)
+
     }
 }
 

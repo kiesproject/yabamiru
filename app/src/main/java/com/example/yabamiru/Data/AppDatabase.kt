@@ -38,7 +38,7 @@ abstract class AppDatabase : RoomDatabase() {
                     AppDatabase::class.java,
                     "task_database"
                 )
-                    .addCallback(RoomDatabaseCallback())    //初期データを用いない場合はこの行をコメントアウトする。
+//                    .addCallback(RoomDatabaseCallback())    //初期データを用いない場合はこの行をコメントアウトする。
                     .addMigrations(MIGRATION1_2,MIGRATION2_3)
                     .build()
                 INSTANCE = instance

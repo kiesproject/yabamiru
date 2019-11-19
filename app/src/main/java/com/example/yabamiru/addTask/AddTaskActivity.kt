@@ -4,17 +4,17 @@ import android.app.DatePickerDialog
 import android.app.Dialog
 import android.app.TimePickerDialog
 import android.graphics.Color
+import android.graphics.PorterDuff
 import android.os.Bundle
+import android.text.Html
 import android.view.View
-import android.widget.DatePicker
-import android.widget.LinearLayout
-import android.widget.TimePicker
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.DialogFragment
 import com.example.yabamiru.R
 import com.example.yabamiru.data.AppDatabase
 import com.example.yabamiru.data.Constant
+import com.example.yabamiru.data.ConstantColor
 import com.example.yabamiru.data.model.Task
 import com.example.yabamiru.data.model.TaskTags
 import com.example.yabamiru.editTask.EditTaskActivity
@@ -23,6 +23,7 @@ import com.example.yabamiru.util.PxDpConverter
 import com.google.android.material.chip.Chip
 import kotlinx.android.synthetic.main.activity_add_task.*
 import kotlinx.android.synthetic.main.activity_edit_task.*
+import kotlinx.android.synthetic.main.activity_task_list.*
 import java.util.*
 import kotlin.concurrent.thread
 
@@ -39,6 +40,8 @@ class AddTaskActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener,
         setTitle(getString(R.string.add_task))
 
         db = AppDatabase.getDatabase(this)
+
+        setColor()
 
         addTask_time_editText.setOnFocusChangeListener { view, b ->
             if (b)
@@ -70,6 +73,7 @@ class AddTaskActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener,
                                     PxDpConverter.dp2Px(4f, context).toInt(),
                                     PxDpConverter.dp2Px(4f, context).toInt()
                                 )
+                                setChipBackgroundColorResource(ConstantColor.nowColorSet.colorTagBackground)
                             }
                             text = addTask_tagName_editText.text.toString()
                             isCheckable = false
@@ -87,11 +91,19 @@ class AddTaskActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener,
                         addTask_tag_flexboxLayout.addView(chip)
                         addTask_tagName_editText.setText("")
                     } else {
-                        Toast.makeText(this, getString(R.string.the_tag_already_added), Toast.LENGTH_SHORT)
+                        Toast.makeText(
+                            this,
+                            getString(R.string.the_tag_already_added),
+                            Toast.LENGTH_SHORT
+                        )
                             .show()
                     }
                 } else {
-                    Toast.makeText(this, getString(R.string.max_number_of_tags_is_five), Toast.LENGTH_SHORT)
+                    Toast.makeText(
+                        this,
+                        getString(R.string.max_number_of_tags_is_five),
+                        Toast.LENGTH_SHORT
+                    )
                         .show()
                 }
             }
@@ -110,7 +122,7 @@ class AddTaskActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener,
 
     fun onFabClicked(view: View) {
         if (validation()) {
-            view.isClickable=false
+            view.isClickable = false
             saveTask()
             Toast.makeText(this, getString(R.string.saved_task), Toast.LENGTH_SHORT).show()
         }
@@ -173,7 +185,7 @@ class AddTaskActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener,
         )
 
         thread {
-            val taskId=db.taskDao().insert(newTask)
+            val taskId = db.taskDao().insert(newTask)
             val newTaskTags = mutableListOf<TaskTags>()
             tags.forEach {
                 newTaskTags.add(
@@ -189,7 +201,69 @@ class AddTaskActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener,
         finish()
 
     }
+
+    private fun setColor() {
+        val dummyDrawable = getDrawable(R.drawable.dummy)
+        dummyDrawable?.let {
+            it.setColorFilter(getColor(ConstantColor.nowColorSet.colorPrimary), PorterDuff.Mode.SRC)
+        }
+        supportActionBar?.setBackgroundDrawable(dummyDrawable)
+        val titleColor = getColor(ConstantColor.nowColorSet.colorTitleText)
+        val htmlColor = String.format(
+            Locale.US, "#%06X",
+            0xFFFFFF and Color.argb(
+                0,
+                Color.red(titleColor),
+                Color.green(titleColor),
+                Color.blue(titleColor)
+            )
+        )
+        val titleHtml = "<font color=\"$htmlColor\">${"タスクを追加"}</font>"
+        supportActionBar?.setTitle(Html.fromHtml(titleHtml))
+
+
+        addTask_layout.setBackgroundResource(ConstantColor.nowColorSet.colorWindowBackground)
+        addTask_fab.backgroundTintList =
+            getColorStateList(ConstantColor.nowColorSet.colorFabBackground)
+
+        addTask_memo_editText.apply {
+            setBackgroundResource(ConstantColor.nowColorSet.colorCardBackground)
+            setHintTextColor(getColor(ConstantColor.nowColorSet.colorText))
+            setTextColor(getColor(ConstantColor.nowColorSet.colorText))
+        }
+        addTask_tagName_editText.apply {
+            setBackgroundResource(ConstantColor.nowColorSet.colorCardBackground)
+            setHintTextColor(getColor(ConstantColor.nowColorSet.colorText))
+            setTextColor(getColor(ConstantColor.nowColorSet.colorText))
+        }
+        addTask_date_editText.apply {
+            setBackgroundResource(ConstantColor.nowColorSet.colorCardBackground)
+            setHintTextColor(getColor(ConstantColor.nowColorSet.colorText))
+            setTextColor(getColor(ConstantColor.nowColorSet.colorText))
+        }
+        addTask_time_editText.apply {
+            setBackgroundResource(ConstantColor.nowColorSet.colorCardBackground)
+            setHintTextColor(getColor(ConstantColor.nowColorSet.colorText))
+            setTextColor(getColor(ConstantColor.nowColorSet.colorText))
+        }
+        addTask_title_editText.apply {
+            setBackgroundResource(ConstantColor.nowColorSet.colorCardBackground)
+            setHintTextColor(getColor(ConstantColor.nowColorSet.colorText))
+            setTextColor(getColor(ConstantColor.nowColorSet.colorText))
+        }
+
+        findViewById<TextView>(R.id.addTask_weight_textView).setTextColor(getColor(ConstantColor.nowColorSet.colorText))
+        findViewById<TextView>(R.id.addTask_deadline_textView).setTextColor(getColor(ConstantColor.nowColorSet.colorText))
+        findViewById<TextView>(R.id.addTask_tags_textView).setTextColor(getColor(ConstantColor.nowColorSet.colorText))
+        findViewById<TextView>(R.id.raku_textView).setTextColor(getColor(ConstantColor.nowColorSet.colorText))
+        findViewById<TextView>(R.id.shi_textView).setTextColor(getColor(ConstantColor.nowColorSet.colorText))
+
+        addTask_addTag_button.setBackgroundResource(ConstantColor.nowColorSet.colorFabBackground)
+        addTask_seekBar_layout.setBackgroundResource(ConstantColor.nowColorSet.colorCardBackground)
+
+    }
 }
+
 
 class DatePick : DialogFragment(), DatePickerDialog.OnDateSetListener {
 
