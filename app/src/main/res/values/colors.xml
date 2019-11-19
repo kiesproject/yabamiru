@@ -24,54 +24,56 @@
     <color name="colorTitleText0_20">#FFFFFF</color>
 
 
-    <color name="colorPrimary20_40">#B45C00</color>
-    <color name="colorWindowBackground20_40">#8D8381</color>
-    <color name="colorPrimaryCardBackground20_40">#CECECE</color>
-    <color name="colorCardBackground20_40">#C5C5C5</color>
-    <color name="colorTagBackground20_40">#B4B4B4</color>
-    <color name="colorTagDoneBackground20_40">#90C06300</color>
-    <color name="colorFabBackground20_40">#B35B00</color>
-    <color name="colorDokuro20_40">#000000</color>
+    <color name="colorPrimary20_40">#FDD835</color>
+    <color name="colorWindowBackground20_40">#FFEDC0</color>
+    <color name="colorPrimaryCardBackground20_40">#FFE798</color>
+    <color name="colorCardBackground20_40">#FFE798</color>
+    <color name="colorTagBackground20_40">#FFCC52</color>
+    <color name="colorTagDoneBackground20_40">#FFDE47</color>
+    <color name="colorFabBackground20_40">#FFB300</color>
+    <color name="colorDokuro20_40">#FB8C00</color>
 
     <color name="colorText20_40">#1B1B1B</color>
     <color name="colorTitleText20_40">#FFFFFF</color>
 
 
-    <color name="colorPrimary40_60">#804400</color>
-    <color name="colorWindowBackground40_60">#494542</color>
-    <color name="colorPrimaryCardBackground40_60">#777777</color>
-    <color name="colorCardBackground40_60">#AFAFAF</color>
-    <color name="colorTagBackground40_60">#B4B4B4</color>
-    <color name="colorTagDoneBackground40_60">#90FB8200</color>
-    <color name="colorFabBackground40_60">#8F3B0B</color>
-    <color name="colorDokuro40_60">#000000</color>
+    <color name="colorPrimary40_60">#205C23</color>
+    <color name="colorWindowBackground40_60">#BAFF79</color>
+    <color name="colorPrimaryCardBackground40_60">#6EB170</color>
+    <color name="colorCardBackground40_60">#468848</color>
+    <color name="colorTagBackground40_60">#6DCC72</color>
+    <color name="colorTagDoneBackground40_60">#3EA342</color>
+    <color name="colorFabBackground40_60">#448646</color>
+    <color name="colorDokuro40_60">#29792D</color>
 
-    <color name="colorText40_60">#1B1B1B</color>
+    <color name="colorText40_60">#FFFFFF</color>
     <color name="colorTitleText40_60">#FFFFFF</color>
 
 
-    <color name="colorPrimary60_80">#1F2555</color>
-    <color name="colorWindowBackground60_80">#424242</color>
-    <color name="colorPrimaryCardBackground60_80">#2A2D46</color>
-    <color name="colorCardBackground60_80">#212647</color>
-    <color name="colorTagBackground60_80">#6875C7</color>
-    <color name="colorTagDoneBackground60_80">#3C499C</color>
-    <color name="colorFabBackground60_80">#444E88</color>
-    <color name="colorDokuro60_80">#4353AF</color>
+    <color name="colorPrimary60_80">#00547C</color>
+    <color name="colorWindowBackground60_80">#9CD2FF</color>
+    <color name="colorPrimaryCardBackground60_80">#039BE5</color>
+    <color name="colorCardBackground60_80">#039BE5</color>
+    <color name="colorTagBackground60_80">#B0B0B1</color>
+    <color name="colorTagDoneBackground60_80">#00ABFD</color>
+    <color name="colorFabBackground60_80">#0D70A0</color>
+    <color name="colorDokuro60_80">#23B4FF</color>
 
-    <color name="colorText60_80">#FFFFFF</color>
+    <color name="colorText60_80">#1B1B1B</color>
     <color name="colorTitleText60_80">#FFFFFF</color>
 
 
-    <color name="colorPrimary80_100">#000000</color>
-    <color name="colorWindowBackground80_100">#2C2C2C</color>
-    <color name="colorPrimaryCardBackground80_100">#2E205A</color>
-    <color name="colorCardBackground80_100">#29304E</color>
-    <color name="colorTagBackground80_100">#E53935</color>
-    <color name="colorTagDoneBackground80_100">#E53935</color>
-    <color name="colorFabBackground80_100">#FF0000</color>
-    <color name="colorDokuro80_100">#FF0000</color>
+    <color name="colorPrimary80_100">#1F2555</color>
+    <color name="colorWindowBackground80_100">#424242</color>
+    <color name="colorPrimaryCardBackground80_100">#2A2D46</color>
+    <color name="colorCardBackground80_100">#212647</color>
+    <color name="colorTagBackground80_100">#4353AF</color>
+    <color name="colorTagDoneBackground80_100">#3C499C</color>
+    <color name="colorFabBackground80_100">#444E88</color>
+    <color name="colorDokuro80_100">#4353AF</color>
 
-    <color name="colorText80_100">#FF0000</color>
-    <color name="colorTitleText80_100">#FF0000</color>
+    <color name="colorText80_100">#FFFFFF</color>
+    <color name="colorTitleText80_100">#FFFFFF</color>
+
+
 </resources>
