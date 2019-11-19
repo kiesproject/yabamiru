@@ -2,12 +2,13 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/detailTask_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
 
     <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/detailTask_title_textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -27,11 +28,11 @@
             android:textSize="30sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView4"
+            app:layout_constraintTop_toBottomOf="@+id/detailTask_title_textView"
             tools:text="asdfasdfasdfasdf" />
 
     <TextView
-            android:id="@+id/textView9"
+            android:id="@+id/detailTask_weight_textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -49,9 +50,10 @@
             app:cardCornerRadius="5dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView9">
+            app:layout_constraintTop_toBottomOf="@+id/detailTask_weight_textView">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/detailTask_weight_cardView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
@@ -62,8 +64,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginEnd="8dp"
-                    android:max="10"
                     android:enabled="false"
+                    android:max="10"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/detail_weight_textView"
                     app:layout_constraintStart_toStartOf="parent"
@@ -86,7 +88,7 @@
     </androidx.cardview.widget.CardView>
 
     <TextView
-            android:id="@+id/textView11"
+            android:id="@+id/detailTask_deadline_textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -104,9 +106,10 @@
             app:cardCornerRadius="5dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView11">
+            app:layout_constraintTop_toBottomOf="@+id/detailTask_deadline_textView">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/detailTask_deadline_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
@@ -129,7 +132,7 @@
     </androidx.cardview.widget.CardView>
 
     <TextView
-            android:id="@+id/textView13"
+            android:id="@+id/detailTask_tags_textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -139,7 +142,7 @@
             app:layout_constraintTop_toBottomOf="@+id/cardView3" />
 
     <androidx.cardview.widget.CardView
-            android:id="@+id/cardView5"
+            android:id="@+id/detailTask_tags_cardView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -147,7 +150,7 @@
             app:cardCornerRadius="5dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView13">
+            app:layout_constraintTop_toBottomOf="@+id/detailTask_tags_textView">
 
         <LinearLayout
                 android:id="@+id/detail_tag_linearLayout"
@@ -158,14 +161,14 @@
     </androidx.cardview.widget.CardView>
 
     <TextView
-            android:id="@+id/textView14"
+            android:id="@+id/detailtask_memo_textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:text="@string/memo"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardView5" />
+            app:layout_constraintTop_toBottomOf="@+id/detailTask_tags_cardView" />
 
     <androidx.cardview.widget.CardView
             android:layout_width="0dp"
@@ -179,7 +182,7 @@
             app:cardCornerRadius="5dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView14">
+            app:layout_constraintTop_toBottomOf="@+id/detailtask_memo_textView">
 
         <TextView
                 android:id="@+id/detail_memo_editText"
